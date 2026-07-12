@@ -34,6 +34,7 @@ vim.keymap.set("n", "<leader>?", function()
   vim.bo[buf].modifiable = false
   vim.wo[win].wrap = false
   vim.wo[win].scrolloff = 4
+  vim.diagnostic.enable(false, { bufnr = buf })
   vim.keymap.set("n", "q",     "<cmd>close<cr>", { buffer = buf, nowait = true, silent = true })
   vim.keymap.set("n", "<Esc>", "<cmd>close<cr>", { buffer = buf, nowait = true, silent = true })
 end, { desc = "Cheatsheet" })

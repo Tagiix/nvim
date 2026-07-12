@@ -29,3 +29,13 @@ vim.api.nvim_create_autocmd("FileType", {
     end, { buffer = ev.buf, desc = "Python REPL" })
   end,
 })
+
+-- LaTeX: buffer-local doc keymap (only active in .tex files)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "tex",
+  callback = function(ev)
+    vim.keymap.set("n", "<leader>dt", function()
+      open_doc("latex.md")
+    end, { buffer = ev.buf, desc = "Docs: LaTeX" })
+  end,
+})

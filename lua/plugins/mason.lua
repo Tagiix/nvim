@@ -5,6 +5,7 @@ return {
       ensure_installed = {
         "clangd",   -- C++ LSP
         "pyright",  -- Python LSP
+        "texlab",   -- LaTeX LSP
       },
     },
   },
