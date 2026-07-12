@@ -1,0 +1,25 @@
+# Secrets — never commit API keys
+lua/config/secrets.lua
+
+# Lazy.nvim plugin data
+data/
+
+# Swap / temp files
+*.log
+*.swp
+*.swo
+.*.swp
+.*.kate-swp
+
+# Test artifacts
+tt.*
+.tests
+.repro
+debug
+
+# Backup files
+*.bak
+
+# Generated
+doc/tags
+foo.*
