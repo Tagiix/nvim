@@ -6,135 +6,157 @@ more — this config layers personal plugins and snippets on top of it.
 
 ---
 
+## Installation
+
+```bash
+# 1. Install dependencies (Arch Linux)
+sudo pacman -S neovim git ripgrep fd unzip nodejs npm
+sudo pacman -S zathura zathura-pdf-mupdf   # LaTeX PDF viewer
+
+# 2. Install a Nerd Font and set it in your terminal
+#    → https://www.nerdfonts.com
+
+# 3. Clone the config
+git clone https://github.com/Tagiix/nvim ~/.config/nvim
+
+# 4. Start Neovim — lazy.nvim auto-installs all plugins (~1 min on first launch)
+nvim
+```
+
+### API Keys (optional)
+
+Create `~/.config/nvim/lua/config/secrets.lua` (gitignored):
+
+```lua
+vim.fn.setenv("GEMINI_API_KEY", "your-key-here")
+```
+
+---
+
 ## Directory Structure
 
 ```
 ~/.config/nvim/
-├── init.lua                          # Entry point — just bootstraps lazy.nvim
+├── init.lua                          # Entry point — bootstraps lazy.nvim
+├── cheatsheet.md                     # In-Neovim cheatsheet (<leader>?)
+├── docs/                             # Guides opened as floating windows
+│   ├── leetcode.md                   # LeetCode workflow guide (<leader>dl)
+│   ├── luasnip.md                    # LuaSnip reference (<leader>ds)
+│   ├── python.md                     # Python dev guide (<leader>dp, .py only)
+│   └── latex.md                      # LaTeX guide (<leader>dt, .tex only)
 ├── lua/
+│   ├── util.lua                      # Shared helpers (open_doc floating window)
 │   ├── config/
 │   │   ├── options.lua               # Vim options (clipboard, textwidth, …)
-│   │   ├── keymaps.lua               # Custom keybindings (LuaSnip navigation)
-│   │   ├── autocmds.lua              # Auto-commands (empty — placeholder)
-│   │   ├── lazy.lua                  # Lazy.nvim bootstrap + setup
-│   │   └── secrets.lua              # ⚠ GITIGNORED — put API keys here
+│   │   ├── keymaps.lua               # Custom keybindings
+│   │   ├── autocmds.lua              # Filetype-specific keymaps (Python, LaTeX)
+│   │   ├── lazy.lua                  # Lazy.nvim bootstrap
+│   │   └── secrets.lua              # ⚠ GITIGNORED — API keys go here
 │   └── plugins/                      # One file per plugin (auto-loaded by lazy)
-│       ├── colorscheme.lua           # Catppuccin theme + integration configs
-│       ├── bufferline.lua            # Bufferline catppuccin highlight (redundant with colorscheme.lua)
+│       ├── colorscheme.lua           # Catppuccin theme
+│       ├── leetcode.lua              # LeetCode plugin
+│       ├── luasnips.lua              # LuaSnip engine + from_lua loader
+│       ├── mason.lua                 # LSP installer (clangd, pyright)
+│       ├── python.lua                # Python extra (basedpyright, ruff, venv-selector)
+│       ├── vimtex.lua                # LaTeX (viewer + ChkTeX config)
+│       ├── neovim-tips.lua           # Neovim tips popup
 │       ├── cmake-tools.lua           # CMake integration
-│       ├── leetcode.lua              # LeetCode plugin (needs nvim-treesitter html)
-│       ├── luasnips.lua              # LuaSnip engine + latex-snippets plugin
-│       ├── mason.lua                 # LSP installer overrides
-│       ├── neovim-tips.lua           # Daily/random Neovim tips popup
-│       ├── example.lua               # Disabled reference file (if true then return {} end)
-│       └── luasnips/                 # Custom LuaSnip snippet definitions
-│           ├── bib.lua               # BibTeX entry snippets
-│           └── tex/
-│               ├── math.lua          # Math environment, Greek letters, operators, …
-│               ├── structure.lua     # Document structure, sectioning, cross-refs
-│               ├── formatting.lua    # Fonts, lists, theorem envs, …
+│       └── luasnips/                 # Custom LuaSnip snippets
+│           ├── bib.lua               # BibTeX entry snippets (.bib)
+│           └── tex/                  # LaTeX snippets (.tex)
+│               ├── math.lua          # Math envs, Greek, operators, matrices, …
+│               ├── structure.lua     # Sections, labels, cross-refs
+│               ├── formatting.lua    # Theorem envs, lists, fonts
 │               ├── floats.lua        # Tables, figures, captions
 │               ├── fonts.lua         # Font size/style commands
-│               └── templates.lua     # Full document templates (if present)
-├── neovim_tips/
-│   └── user_tips.md                  # Your personal tips shown by neovim-tips plugin
-├── plugins/                          # ⚠ ROOT-LEVEL (NOT loaded by lazy.nvim)
-│   └── …                             # Dead code / old drafts — safe to ignore
-├── lazy-lock.json                    # Plugin version lockfile (commit this)
-├── lazyvim.json                      # LazyVim extras selection
-└── stylua.toml                       # Lua formatter config
+│               └── templates.lua     # Full document templates
+├── lazy-lock.json                    # Plugin version lockfile (committed)
+└── lazyvim.json                      # LazyVim extras
 ```
 
 ---
 
-## Plugins
+## Plugins & Language Support
 
-### Theme
-**Catppuccin** (`lua/plugins/colorscheme.lua`) — auto-detects light/dark mode.
-LSP diagnostics show as italic virtual text and undercurl underlines.
-Integrates with bufferline, gitsigns, telescope, noice, and more.
+| Language | LSP | Formatter | Extra |
+|----------|-----|-----------|-------|
+| C++ | clangd | clang-format | `lang.clangd` |
+| Python | basedpyright | ruff | `lang.python` |
+| LaTeX | texlab | — | `lang.tex` + vimtex |
+| Rust | rust-analyzer | rustfmt | `lang.rust` |
+| JSON | jsonls | prettier | `lang.json` |
+| Markdown | — | prettier | `lang.markdown` |
 
-### Snippets
-**LuaSnip** (`lua/plugins/luasnips.lua`) with two sources:
-- `evesdropper/luasnip-latex-snippets.nvim` — community LaTeX snippets
-- `lua/plugins/luasnips/` — personal snippets (BibTeX + extended LaTeX math)
-
-> **Note**: The personal snippets folder is defined but the loader is commented
-> out in `luasnips.lua`. To activate them, uncomment the `require(...)` call
-> documented in that file.
-
-### LSP / Tooling
-- **Mason** — auto-installs language servers and linters
-- **cmake-tools** — CMake project integration (build, run, debug)
-
-### Productivity
-- **leetcode.nvim** — solve LeetCode problems inside Neovim
-- **neovim-tips** — shows Neovim tips; your custom tips live in `neovim_tips/user_tips.md`
+### Other plugins
+- **LuaSnip** — snippet engine with custom LaTeX/BibTeX snippets
+- **leetcode.nvim** — solve LeetCode problems inside Neovim (C++ / Python3)
+- **vimtex** — LaTeX compilation (latexmk), PDF viewing (Zathura), text objects
+- **Catppuccin** — auto light/dark theme
+- **cmake-tools** — CMake build integration
+- **neovim-tips** — Neovim tips popup
 
 ---
 
-## Custom Keybindings
+## Keybindings
 
-### LuaSnip (insert & select mode)
+`<leader>` = Space
+
+### Docs & Cheatsheet
+
+| Key | Opens |
+|-----|-------|
+| `<leader>?` | Cheatsheet |
+| `<leader>dl` | LeetCode guide |
+| `<leader>ds` | LuaSnip guide |
+| `<leader>dp` | Python guide _(in .py files)_ |
+| `<leader>dt` | LaTeX guide _(in .tex files)_ |
+
+### Python _(in .py files)_
+
+| Key | Action |
+|-----|--------|
+| `<leader>rp` | Run current file |
+| `<leader>ri` | Open Python REPL |
+| `<leader>cv` | Select virtualenv |
+
+### LeetCode
+
+| Key | Action |
+|-----|--------|
+| `<leader>ll` | Switch language (C++ / Python3) |
+
+### LaTeX (`<localleader>` = `\`)
+
+| Key | Action |
+|-----|--------|
+| `\ll` | Start/stop compilation |
+| `\lv` | View PDF in Zathura |
+| `\lt` | Toggle table of contents |
+| `\le` | Show errors |
+
+### LuaSnip _(insert & select mode)_
+
 | Key | Action |
 |-----|--------|
 | `<C-K>` | Expand snippet |
-| `<C-L>` | Jump to next snippet node |
-| `<C-J>` | Jump to previous snippet node |
-| `<C-E>` | Cycle through snippet choices |
-
-### Neovim Tips (`<leader>nt…`)
-| Key | Action |
-|-----|--------|
-| `<leader>nto` | Open tips browser |
-| `<leader>nte` | Edit your tips file |
-| `<leader>nta` | Add a new tip |
-| `<leader>nth` | Open plugin help |
-| `<leader>ntr` | Show a random tip |
-| `<leader>ntp` | Open tips as PDF |
+| `<C-L>` | Jump to next node |
+| `<C-J>` | Jump to previous node |
+| `<C-E>` | Cycle choices |
 
 ---
 
 ## Options
 
 Set in `lua/config/options.lua`:
-- `clipboard = "unnamedplus"` — yanks go to system clipboard automatically
+- `clipboard = "unnamedplus"` — yanks go to system clipboard
 - `textwidth = 160` — line wrap guide at 160 characters
 
 ---
 
-## Secrets / API Keys
+## Updating
 
-API keys (e.g. `GEMINI_API_KEY`) go in `lua/config/secrets.lua`, which is
-gitignored. A template is provided. `options.lua` loads it with `pcall` so
-Neovim won't error if the file is absent on a new machine.
-
----
-
-## Updating Plugins
-
+```vim
+:Lazy update      " update all plugins
+:Lazy sync        " install missing + update + clean
+:Mason            " manage language servers
 ```
-:Lazy update       — update all plugins
-:Lazy sync         — install missing + update + clean
-:Mason             — manage language servers
-```
-
-The `lazy-lock.json` file pins exact plugin versions. Commit it so that
-`git clone + :Lazy restore` reproduces the exact same setup on a new machine.
-
----
-
-## Adding a New Plugin
-
-Create a file in `lua/plugins/your-plugin.lua`:
-
-```lua
-return {
-  "author/plugin-name",
-  opts = {
-    -- options
-  },
-}
-```
-
-Lazy.nvim auto-discovers all `.lua` files in `lua/plugins/`.
