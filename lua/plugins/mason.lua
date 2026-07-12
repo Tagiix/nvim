@@ -3,9 +3,9 @@ return {
     "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
-        "clangd",   -- C++ LSP
-        "pyright",  -- Python LSP
-        "texlab",   -- LaTeX LSP
+        "clangd",  -- C++ LSP
+        "pyright", -- Python LSP
+        -- texlab and basedpyright handled by lang.tex and lang.python extras
       },
     },
   },
