@@ -23,3 +23,6 @@ debug
 # Generated
 doc/tags
 foo.*
+
+# Dead code — root-level plugins/ dir, never loaded by lazy.nvim
+plugins/
