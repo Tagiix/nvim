@@ -16,7 +16,7 @@ return {
         before = { "#include <bits/stdc++.h>", "using namespace std;" },
       },
       ["python3"] = {
-        before = {
+        imports = {
           "from typing import List, Optional, Dict, Tuple, Set, DefaultDict, Deque",
           "from collections import defaultdict, Counter, deque",
           "from heapq import heappush, heappop, heapify, nlargest, nsmallest",
