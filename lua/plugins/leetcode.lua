@@ -140,5 +140,17 @@ return {
     end, { desc = "LeetCode: Top Interview 150" })
 
     vim.keymap.set("n", "<leader>li", "<cmd>LeetInterview<cr>", { desc = "LeetCode: Interview 150" })
+
+    -- nui.nvim layouts don't listen to VimResized; reposition the console manually.
+    vim.api.nvim_create_autocmd("VimResized", {
+      callback = vim.schedule_wrap(function()
+        local ok, utils = pcall(require, "leetcode.utils")
+        if not ok then return end
+        local q = utils.curr_question()
+        if q and q.console and q.console.visible then
+          q.console:update()
+        end
+      end),
+    })
   end,
 }
