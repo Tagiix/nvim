@@ -229,15 +229,18 @@ opts = {
       before = { "#include <bits/stdc++.h>", "using namespace std;" },
     },
     ["python3"] = {
-      imports = {  -- replaces the plugin's default wildcard imports
-        "from typing import List, Optional, Dict, Tuple, Set, DefaultDict, Deque",
-        "from collections import defaultdict, Counter, deque",
-        "from heapq import heappush, heappop, heapify, nlargest, nsmallest",
-        "from bisect import bisect_left, bisect_right, insort",
-        "from math import inf, floor, ceil, sqrt, log2, gcd, comb",
-        "from itertools import combinations, permutations, product, accumulate",
-        "from functools import lru_cache, cache",
-      },
+      -- function form is required to replace (not merge with) the defaults
+      imports = function()
+        return {
+          "from typing import List, Optional, Dict, Tuple, Set, DefaultDict, Deque",
+          "from collections import defaultdict, Counter, deque",
+          "from heapq import heappush, heappop, heapify, nlargest, nsmallest",
+          "from bisect import bisect_left, bisect_right, insort",
+          "from math import inf, floor, ceil, sqrt, log2, gcd, comb",
+          "from itertools import combinations, permutations, product, accumulate",
+          "from functools import lru_cache, cache",
+        }
+      end,
     },
   },
 },
