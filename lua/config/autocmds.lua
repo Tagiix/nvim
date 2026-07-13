@@ -13,19 +13,19 @@ local open_doc = require("util").open_doc
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "python",
   callback = function(ev)
-    -- Open the Python guide (<leader>dp, visible in which-key only in Python files)
-    vim.keymap.set("n", "<leader>dp", function()
+    -- Open the Python guide (<leader>Dp, visible in which-key only in Python files)
+    vim.keymap.set("n", "<leader>Dp", function()
       open_doc("python.md")
     end, { buffer = ev.buf, desc = "Docs: Python" })
 
     -- Run current file in a floating terminal
     vim.keymap.set("n", "<leader>rp", function()
-      Snacks.terminal.open("python3 " .. vim.fn.shellescape(vim.fn.expand("%:p")))
+      Snacks.terminal({ "python3", vim.fn.expand("%:p") }, { auto_close = false })
     end, { buffer = ev.buf, desc = "Run Python file" })
 
     -- Open an interactive Python REPL
     vim.keymap.set("n", "<leader>ri", function()
-      Snacks.terminal.open("python3")
+      Snacks.terminal("python3")
     end, { buffer = ev.buf, desc = "Python REPL" })
   end,
 })
@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "tex",
   callback = function(ev)
-    vim.keymap.set("n", "<leader>dt", function()
+    vim.keymap.set("n", "<leader>Dt", function()
       open_doc("latex.md")
     end, { buffer = ev.buf, desc = "Docs: LaTeX" })
   end,

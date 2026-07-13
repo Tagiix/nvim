@@ -40,8 +40,8 @@ vim.keymap.set("n", "<leader>?", function()
 end, { desc = "Cheatsheet" })
 
 -- Plugin docs
-vim.keymap.set("n", "<leader>dl", function() open_doc("leetcode.md") end, { desc = "Docs: LeetCode" })
-vim.keymap.set("n", "<leader>ds", function() open_doc("luasnip.md")  end, { desc = "Docs: LuaSnip" })
+vim.keymap.set("n", "<leader>Dl", function() open_doc("leetcode.md") end, { desc = "Docs: LeetCode" })
+vim.keymap.set("n", "<leader>Ds", function() open_doc("luasnip.md")  end, { desc = "Docs: LuaSnip" })
 
 -- LeetCode: quick language switch
 vim.keymap.set("n", "<leader>ll", "<cmd>Leet lang<cr>", { desc = "LeetCode: switch language" })
