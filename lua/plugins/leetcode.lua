@@ -141,18 +141,18 @@ return {
 
     vim.keymap.set("n", "<leader>li", "<cmd>LeetInterview<cr>", { desc = "LeetCode: Interview 150" })
 
-    -- nui.nvim layouts don't listen to VimResized; reposition the console manually.
+    -- nui.nvim floats don't recalculate percentage-based positions on resize.
+    -- update() re-runs update_layout_config which detects the container size
+    -- change and recomputes row/col/width/height from the stored "50%" strings.
     vim.api.nvim_create_autocmd("VimResized", {
       callback = vim.schedule_wrap(function()
-        local ok, utils = pcall(require, "leetcode.utils")
-        if not ok then return end
-        local tabp = vim.api.nvim_get_current_tabpage()
-        local tab = vim.tbl_filter(function(t) return t.tabpage == tabp end, utils.question_tabs())[1]
-        local q = tab and tab.question
-        if q and q.console and q.console.visible then
-          q.console:hide()
-          q.console:show()
+        if not _Lc_state then return end
+        for _, q in ipairs(_Lc_state.questions or {}) do
+          if q.console and q.console.visible then
+            pcall(function() q.console:update() end)
+          end
         end
+        vim.cmd("redraw!")
       end),
     })
   end,
