@@ -9,6 +9,10 @@
 
 local open_doc = require("util").open_doc
 
+-- LazyVim's VimResized runs `tabdo wincmd =` which equalizes all windows in
+-- every tab. This breaks leetcode.nvim layouts (menu splits in two, etc.).
+vim.api.nvim_del_augroup_by_name("lazyvim_resize_splits")
+
 -- Python: buffer-local keymaps (only active in .py files)
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "python",
