@@ -146,7 +146,9 @@ return {
       callback = vim.schedule_wrap(function()
         local ok, utils = pcall(require, "leetcode.utils")
         if not ok then return end
-        local q = utils.curr_question()
+        local tabp = vim.api.nvim_get_current_tabpage()
+        local tab = vim.tbl_filter(function(t) return t.tabpage == tabp end, utils.question_tabs())[1]
+        local q = tab and tab.question
         if q and q.console and q.console.visible then
           q.console:update()
         end
