@@ -39,11 +39,18 @@ and currently open problem tabs.
 
 ### 1 — Browse problems
 
+**All problems:**
 ```
 :Leet list
 ```
 
-Opens the problem picker (Telescope). You can:
+**Top Interview 150 only** (curated study plan):
+```
+:LeetInterview
+```
+or press `<leader>li` from normal mode.
+
+Both open the Telescope picker. You can:
 
 - **Type** to filter by problem title or number
 - Use the filter keys inside the picker:
@@ -136,7 +143,8 @@ failing test case if applicable.
 | Command | Action |
 |---------|--------|
 | `:Leet` | Open main menu |
-| `:Leet list` | Problem picker (Telescope) |
+| `:Leet list` | All problems picker (Telescope) |
+| `:LeetInterview` | Top Interview 150 picker |
 | `:Leet daily` | Open today's daily challenge directly |
 | `:Leet run` | Run test cases |
 | `:Leet submit` | Submit solution |
@@ -221,7 +229,15 @@ opts = {
       before = { "#include <bits/stdc++.h>", "using namespace std;" },
     },
     ["python3"] = {
-      before = "from typing import *",
+      before = {
+        "from typing import List, Optional, Dict, Tuple, Set, DefaultDict, Deque",
+        "from collections import defaultdict, Counter, deque",
+        "from heapq import heappush, heappop, heapify, nlargest, nsmallest",
+        "from bisect import bisect_left, bisect_right, insort",
+        "from math import inf, floor, ceil, sqrt, log2, gcd, comb",
+        "from itertools import combinations, permutations, product, accumulate",
+        "from functools import lru_cache, cache",
+      },
     },
   },
 },

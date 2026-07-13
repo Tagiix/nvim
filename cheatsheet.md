@@ -225,10 +225,14 @@
 
 ## LeetCode
 
-| Command | Action |
-|---------|--------|
+| Key / Command | Action |
+|---------------|--------|
+| `<leader>li` | Interview 150 picker |
+| `<leader>ll` | Switch language |
 | `:Leet` | Open LeetCode |
-| `:Leet list` | Problem list |
+| `:Leet list` | All problems picker |
+| `:LeetInterview` | Top Interview 150 picker |
+| `:Leet daily` | Today's daily challenge |
 | `:Leet desc` | Toggle problem description |
 | `:Leet run` | Run test cases |
 | `:Leet submit` | Submit solution |
