@@ -3,6 +3,7 @@
 
 vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
 vim.opt.textwidth = 160
+vim.opt.undofile = true -- persist undo history across sessions
 
 -- Load local secrets (API keys etc.) — file is gitignored, won't error if missing
 pcall(require, "config.secrets")
