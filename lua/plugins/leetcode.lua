@@ -150,7 +150,8 @@ return {
         local tab = vim.tbl_filter(function(t) return t.tabpage == tabp end, utils.question_tabs())[1]
         local q = tab and tab.question
         if q and q.console and q.console.visible then
-          q.console:update()
+          q.console:hide()
+          q.console:show()
         end
       end),
     })
