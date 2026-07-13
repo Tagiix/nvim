@@ -145,6 +145,7 @@ failing test case if applicable.
 | `:Leet` | Open main menu |
 | `:Leet list` | All problems picker (Telescope) |
 | `:LeetInterview` | Top Interview 150 picker |
+| `:LeetReview` | Ask Claude to criticize your solution |
 | `:Leet daily` | Open today's daily challenge directly |
 | `:Leet run` | Run test cases |
 | `:Leet submit` | Submit solution |

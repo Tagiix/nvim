@@ -141,6 +141,100 @@ return {
 
     vim.keymap.set("n", "<leader>li", "<cmd>LeetInterview<cr>", { desc = "LeetCode: Interview 150" })
 
+    vim.api.nvim_create_user_command("LeetReview", function()
+      -- Find current question by matching the active tabpage
+      local tabs = require("leetcode.utils").question_tabs()
+      local tabp = vim.api.nvim_get_current_tabpage()
+      local curr = nil
+      for _, t in ipairs(tabs) do
+        if t.tabpage == tabp then curr = t.question; break end
+      end
+      if not curr then
+        vim.notify("Not in a LeetCode problem", vim.log.levels.ERROR)
+        return
+      end
+      if not (curr.bufnr and vim.api.nvim_buf_is_valid(curr.bufnr)) then
+        vim.notify("Solution buffer not found", vim.log.levels.ERROR)
+        return
+      end
+      if not (curr.q and curr.q.content) then
+        vim.notify("Problem data not loaded yet", vim.log.levels.ERROR)
+        return
+      end
+
+      local code = table.concat(vim.api.nvim_buf_get_lines(curr.bufnr, 0, -1, false), "\n")
+      local q = curr.q
+
+      -- Strip HTML from description
+      local desc = q.content
+        :gsub("<[^>]+>", "")
+        :gsub("&nbsp;", " "):gsub("&lt;", "<"):gsub("&gt;", ">")
+        :gsub("&amp;", "&"):gsub("&#39;", "'"):gsub("&quot;", '"')
+        :gsub("\n\n+", "\n\n"):gsub("^\n+", ""):gsub("\n+$", "")
+
+      local prompt = table.concat({
+        ("LeetCode #%s — %s (%s)"):format(q.frontend_id, q.title, q.difficulty),
+        "",
+        "Problem:",
+        desc,
+        "",
+        ("My %s solution:"):format(curr.lang),
+        "```" .. curr.lang,
+        code,
+        "```",
+        "",
+        "Criticize this solution: correctness, edge cases, time/space complexity, and any concrete improvements.",
+      }, "\n")
+
+      -- Open a float to stream the response into
+      local buf = vim.api.nvim_create_buf(false, true)
+      vim.bo[buf].filetype = "markdown"
+      vim.bo[buf].bufhidden = "wipe"
+      local width = math.floor(vim.o.columns * 0.75)
+      local height = math.floor(vim.o.lines * 0.8)
+      local win = vim.api.nvim_open_win(buf, true, {
+        relative = "editor",
+        width = width,
+        height = height,
+        row = math.floor((vim.o.lines - height) / 2),
+        col = math.floor((vim.o.columns - width) / 2),
+        style = "minimal",
+        border = "rounded",
+        title = (" Claude Review — %s "):format(q.title),
+        title_pos = "center",
+      })
+      vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = buf, silent = true })
+      vim.keymap.set("n", "<Esc>", "<cmd>close<cr>", { buffer = buf, silent = true })
+      vim.api.nvim_buf_set_lines(buf, 0, -1, false, { "Asking Claude, please wait…" })
+
+      local output = {}
+      vim.fn.jobstart({ "claude", "-p", prompt }, {
+        on_stdout = function(_, data)
+          if not data then return end
+          vim.schedule(function()
+            if not vim.api.nvim_buf_is_valid(buf) then return end
+            for _, line in ipairs(data) do
+              table.insert(output, line)
+            end
+            vim.api.nvim_buf_set_lines(buf, 0, -1, false, output)
+            if vim.api.nvim_win_is_valid(win) then
+              vim.api.nvim_win_set_cursor(win, { math.max(1, #output), 0 })
+            end
+          end)
+        end,
+        on_exit = function(_, code_exit)
+          vim.schedule(function()
+            if not vim.api.nvim_buf_is_valid(buf) then return end
+            if code_exit ~= 0 then
+              vim.notify("Claude exited with code " .. code_exit, vim.log.levels.WARN)
+            end
+          end)
+        end,
+      })
+    end, { desc = "LeetCode: Claude Code Review" })
+
+    vim.keymap.set("n", "<leader>lc", "<cmd>LeetReview<cr>", { desc = "LeetCode: Claude Review" })
+
     -- nui.nvim floats don't recalculate percentage-based positions on resize.
     -- update() re-runs update_layout_config which detects the container size
     -- change and recomputes row/col/width/height from the stored "50%" strings.
