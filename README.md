@@ -12,8 +12,9 @@ more — this config layers personal plugins and snippets on top of it.
 # 1. Install dependencies (Arch Linux)
 sudo pacman -S neovim git ripgrep fd unzip nodejs npm
 sudo pacman -S clang cmake ninja          # C++ toolchain
-yay -S cppman && cppman -c                # C++ stdlib docs (AUR; or: pipx install cppman)
-sudo pacman -S zathura zathura-pdf-mupdf # LaTeX PDF viewer
+sudo pacman -S zathura zathura-pdf-mupdf  # LaTeX PDF viewer
+paru -S cppman                            # C++ stdlib docs (AUR)
+cppman -c                                 # Cache all cppreference pages (~5 min, one-time)
 
 # 2. Install a Nerd Font and set it in your terminal
 #    → https://www.nerdfonts.com
