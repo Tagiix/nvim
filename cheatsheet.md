@@ -31,6 +31,11 @@
 | `gr`          | References |
 | `gi`          | Implementations |
 | `gy`          | Type definition |
+| `gpd`         | **Preview** definition (float, stay in place) |
+| `gpr`         | **Preview** references |
+| `gpi`         | **Preview** implementation |
+| `gpt`         | **Preview** type definition |
+| `gpq`         | Close all preview windows |
 | `<leader>ca`  | Code action |
 | `<leader>cr`  | Rename symbol |
 | `<leader>cf`  | Format file / selection |

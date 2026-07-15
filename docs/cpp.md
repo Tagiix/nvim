@@ -29,6 +29,13 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)   # required by clangd
 
+# ccache: cache compiled objects — subsequent builds after code changes are much faster
+find_program(CCACHE ccache)
+if(CCACHE)
+  set(CMAKE_C_COMPILER_LAUNCHER ${CCACHE})
+  set(CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE})
+endif()
+
 add_executable(myproject src/main.cpp)
 
 target_include_directories(myproject PRIVATE include)
