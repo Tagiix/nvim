@@ -239,6 +239,7 @@
 | `<leader>ce` | Compiler Explorer (Godbolt) |
 | `<leader>cE` | Compiler Explorer (live mode) |
 | `<leader>Dc` | Open C++ workflow guide |
+| `<leader>K`  | cppman: cppreference docs for word under cursor |
 
 ---
 

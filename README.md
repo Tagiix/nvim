@@ -12,6 +12,7 @@ more — this config layers personal plugins and snippets on top of it.
 # 1. Install dependencies (Arch Linux)
 sudo pacman -S neovim git ripgrep fd unzip nodejs npm
 sudo pacman -S clang cmake ninja          # C++ toolchain
+sudo pacman -S cppman && cppman -c        # C++ stdlib docs (cppreference, ~5 min cache)
 sudo pacman -S zathura zathura-pdf-mupdf # LaTeX PDF viewer
 
 # 2. Install a Nerd Font and set it in your terminal
@@ -143,6 +144,7 @@ vim.fn.setenv("GEMINI_API_KEY", "your-key-here")
 | `<leader>mc` | Clean build |
 | `<leader>mt` | Select target |
 | `<leader>mi` | CMake project info |
+| `<leader>K`  | cppman: full cppreference docs for symbol under cursor |
 | `<leader>ce` | Compiler Explorer (Godbolt) |
 | `<leader>db` | Toggle breakpoint |
 | `<leader>dc` | Continue / start debugger |

@@ -75,7 +75,8 @@ clangd runs automatically in C/C++ buffers. Key features:
 
 | Key | Action |
 |-----|--------|
-| `K` | Hover docs / signature |
+| `K` | Hover docs / signature (clangd — good for your own code) |
+| `<leader>K` | cppman: full cppreference docs for word under cursor |
 | `gd` | Go to definition |
 | `gr` | Find all references |
 | `<leader>ca` | Code action (includes clang-tidy fixes) |

@@ -55,5 +55,10 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "<leader>Dc", function()
       open_doc("cpp.md")
     end, { buffer = ev.buf, desc = "Docs: C++" })
+
+    -- cppman: cppreference docs for word under cursor (requires: sudo pacman -S cppman && cppman -c)
+    vim.keymap.set("n", "<leader>K", function()
+      Snacks.terminal({ "cppman", vim.fn.expand("<cword>") })
+    end, { buffer = ev.buf, desc = "cppman docs" })
   end,
 })
