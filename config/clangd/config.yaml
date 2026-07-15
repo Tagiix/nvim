@@ -1,0 +1,34 @@
+Diagnostics:
+  UnusedIncludes: Strict
+  MissingIncludes: Strict
+  ClangTidy:
+    Add:
+      - bugprone-*
+      - cppcoreguidelines-*
+      - modernize-*
+      - performance-*
+      - readability-*
+    Remove:
+      # Controversial / opinionated style rules
+      - modernize-use-trailing-return-type
+      - readability-magic-numbers
+      - readability-identifier-length
+      - readability-avoid-unconditional-preprocessor-if
+      - cppcoreguidelines-avoid-magic-numbers
+      - cppcoreguidelines-pro-bounds-array-to-pointer-decay
+      - cppcoreguidelines-pro-bounds-pointer-arithmetic
+      - cppcoreguidelines-avoid-do-while
+      # Platform-specific (Linux-only dev)
+      - darwin-*
+      - linuxkernel-*
+      - fuchsia-*
+      # House-style specific
+      - google-*
+      - llvm-*
+      - abseil-*
+
+InlayHints:
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+  Designators: true

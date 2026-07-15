@@ -11,7 +11,8 @@ more — this config layers personal plugins and snippets on top of it.
 ```bash
 # 1. Install dependencies (Arch Linux)
 sudo pacman -S neovim git ripgrep fd unzip nodejs npm
-sudo pacman -S zathura zathura-pdf-mupdf   # LaTeX PDF viewer
+sudo pacman -S clang cmake ninja          # C++ toolchain
+sudo pacman -S zathura zathura-pdf-mupdf # LaTeX PDF viewer
 
 # 2. Install a Nerd Font and set it in your terminal
 #    → https://www.nerdfonts.com
@@ -19,9 +20,20 @@ sudo pacman -S zathura zathura-pdf-mupdf   # LaTeX PDF viewer
 # 3. Clone the config
 git clone https://github.com/Tagiix/nvim ~/.config/nvim
 
-# 4. Start Neovim — lazy.nvim auto-installs all plugins (~1 min on first launch)
+# 4. Symlink external config files (clangd, etc.)
+~/.config/nvim/install.sh
+
+# 5. Start Neovim — lazy.nvim auto-installs all plugins (~1 min on first launch)
 nvim
 ```
+
+### What `install.sh` sets up
+
+| Symlink created | Source in this repo |
+|-----------------|---------------------|
+| `~/.config/clangd/config.yaml` | `config/clangd/config.yaml` |
+
+The clangd config enables strict diagnostics and clang-tidy checks (modernize, bugprone, performance, readability). Re-run `install.sh` if you add more external configs in the future.
 
 ### API Keys (optional)
 
@@ -37,30 +49,37 @@ vim.fn.setenv("GEMINI_API_KEY", "your-key-here")
 
 ```
 ~/.config/nvim/
+├── install.sh                        # Symlinks external configs (run after clone)
 ├── init.lua                          # Entry point — bootstraps lazy.nvim
 ├── cheatsheet.md                     # In-Neovim cheatsheet (<leader>?)
+├── config/
+│   └── clangd/
+│       └── config.yaml               # clangd diagnostics + clang-tidy config
+│                                     # (symlinked to ~/.config/clangd/config.yaml)
 ├── docs/                             # Guides opened as floating windows
-│   ├── leetcode.md                   # LeetCode workflow guide (<leader>dl)
-│   ├── luasnip.md                    # LuaSnip reference (<leader>ds)
-│   ├── python.md                     # Python dev guide (<leader>dp, .py only)
-│   └── latex.md                      # LaTeX guide (<leader>dt, .tex only)
+│   ├── cpp.md                        # C++ workflow guide (<leader>Dc, .cpp only)
+│   ├── leetcode.md                   # LeetCode workflow guide (<leader>Dl)
+│   ├── luasnip.md                    # LuaSnip reference (<leader>Ds)
+│   ├── python.md                     # Python dev guide (<leader>Dp, .py only)
+│   └── latex.md                      # LaTeX guide (<leader>Dt, .tex only)
 ├── lua/
 │   ├── util.lua                      # Shared helpers (open_doc floating window)
 │   ├── config/
 │   │   ├── options.lua               # Vim options (clipboard, textwidth, …)
 │   │   ├── keymaps.lua               # Custom keybindings
-│   │   ├── autocmds.lua              # Filetype-specific keymaps (Python, LaTeX)
+│   │   ├── autocmds.lua              # Filetype-specific keymaps (C++, Python, LaTeX)
 │   │   ├── lazy.lua                  # Lazy.nvim bootstrap
 │   │   └── secrets.lua              # ⚠ GITIGNORED — API keys go here
 │   └── plugins/                      # One file per plugin (auto-loaded by lazy)
 │       ├── colorscheme.lua           # Catppuccin theme
+│       ├── cpp.lua                   # C++ (clangd tuning, compiler-explorer, treesitter)
+│       ├── cmake-tools.lua           # CMake integration (Ninja, keymaps on <leader>m)
 │       ├── leetcode.lua              # LeetCode plugin
 │       ├── luasnips.lua              # LuaSnip engine + from_lua loader
-│       ├── mason.lua                 # LSP installer (clangd, pyright)
+│       ├── mason.lua                 # LSP installer (clangd, codelldb, pyright)
 │       ├── python.lua                # Python extra (basedpyright, ruff, venv-selector)
 │       ├── vimtex.lua                # LaTeX (viewer + ChkTeX config)
 │       ├── neovim-tips.lua           # Neovim tips popup
-│       ├── cmake-tools.lua           # CMake integration
 │       └── luasnips/                 # Custom LuaSnip snippets
 │           ├── bib.lua               # BibTeX entry snippets (.bib)
 │           └── tex/                  # LaTeX snippets (.tex)
@@ -106,10 +125,28 @@ vim.fn.setenv("GEMINI_API_KEY", "your-key-here")
 | Key | Opens |
 |-----|-------|
 | `<leader>?` | Cheatsheet |
-| `<leader>dl` | LeetCode guide |
-| `<leader>ds` | LuaSnip guide |
-| `<leader>dp` | Python guide _(in .py files)_ |
-| `<leader>dt` | LaTeX guide _(in .tex files)_ |
+| `<leader>Dl` | LeetCode guide |
+| `<leader>Ds` | LuaSnip guide |
+| `<leader>Dp` | Python guide _(in .py files)_ |
+| `<leader>Dt` | LaTeX guide _(in .tex files)_ |
+| `<leader>Dc` | C++ workflow guide _(in .cpp/.c files)_ |
+
+### C++ _(in .cpp/.c files)_
+
+| Key | Action |
+|-----|--------|
+| `<leader>mx` | Select build type (Debug / Release / …) |
+| `<leader>mg` | Configure project (CMake generate) |
+| `<leader>mb` | Build selected target |
+| `<leader>mr` | Run selected target |
+| `<leader>md` | Debug selected target (DAP + codelldb) |
+| `<leader>mc` | Clean build |
+| `<leader>mt` | Select target |
+| `<leader>mi` | CMake project info |
+| `<leader>ce` | Compiler Explorer (Godbolt) |
+| `<leader>db` | Toggle breakpoint |
+| `<leader>dc` | Continue / start debugger |
+| `<leader>du` | Toggle DAP UI |
 
 ### Python _(in .py files)_
 

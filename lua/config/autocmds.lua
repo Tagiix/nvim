@@ -43,3 +43,17 @@ vim.api.nvim_create_autocmd("FileType", {
     end, { buffer = ev.buf, desc = "Docs: LaTeX" })
   end,
 })
+
+-- C/C++: 4-space indent + buffer-local keymaps
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "c", "cpp" },
+  callback = function(ev)
+    vim.bo[ev.buf].tabstop = 4
+    vim.bo[ev.buf].shiftwidth = 4
+    vim.bo[ev.buf].expandtab = true
+
+    vim.keymap.set("n", "<leader>Dc", function()
+      open_doc("cpp.md")
+    end, { buffer = ev.buf, desc = "Docs: C++" })
+  end,
+})

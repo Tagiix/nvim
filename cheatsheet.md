@@ -207,19 +207,38 @@
 
 ---
 
-## CMake Tools
+## CMake Tools  (`<leader>m…`)
 
-| Command | Action |
-|---------|--------|
-| `:CMakeGenerate` | Configure project (cmake ..) |
-| `:CMakeBuild` | Build selected target |
-| `:CMakeRun` | Run selected target |
-| `:CMakeDebug` | Debug selected target |
-| `:CMakeClean` | Clean build |
-| `:CMakeSelectBuildType` | Debug / Release / RelWithDebInfo |
-| `:CMakeSelectTarget` | Choose build target |
-| `:CMakeSelectBuildDir` | Choose build directory |
-| `:CMakeInfo` | Show project info |
+| Key | Action |
+|-----|--------|
+| `<leader>mg` | CMake Generate (configure) |
+| `<leader>mb` | CMake Build |
+| `<leader>mr` | CMake Run |
+| `<leader>md` | CMake Debug |
+| `<leader>mc` | CMake Clean |
+| `<leader>mt` | CMake Select Target |
+| `<leader>mx` | CMake Build Type (Debug / Release / …) |
+| `<leader>mi` | CMake Info |
+
+> Workflow: `<leader>mx` → choose Debug → `<leader>mg` → `<leader>mb` → `<leader>mr`
+
+---
+
+## C++ / DAP Debugging
+
+| Key | Action |
+|-----|--------|
+| `<leader>md` | Launch debugger (cmake-tools, picks target auto) |
+| `<leader>db` | Toggle breakpoint |
+| `<leader>dc` | Continue / start |
+| `<leader>ds` | Step over |
+| `<leader>di` | Step into |
+| `<leader>do` | Step out |
+| `<leader>du` | Toggle DAP UI |
+| `<leader>dB` | Conditional breakpoint |
+| `<leader>ce` | Compiler Explorer (Godbolt) |
+| `<leader>cE` | Compiler Explorer (live mode) |
+| `<leader>Dc` | Open C++ workflow guide |
 
 ---
 
