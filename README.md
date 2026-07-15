@@ -13,7 +13,7 @@ more — this config layers personal plugins and snippets on top of it.
 sudo pacman -S neovim git ripgrep fd unzip nodejs npm
 sudo pacman -S clang cmake ninja          # C++ toolchain
 sudo pacman -S zathura zathura-pdf-mupdf  # LaTeX PDF viewer
-paru -S cppman                            # C++ stdlib docs (AUR)
+paru -S cppman-git                        # C++ stdlib docs (AUR)
 cppman -c                                 # Cache all cppreference pages (~5 min, one-time)
 
 # 2. Install a Nerd Font and set it in your terminal
