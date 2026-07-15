@@ -58,7 +58,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
     -- cppman: cppreference docs for word under cursor (requires: sudo pacman -S cppman && cppman -c)
     vim.keymap.set("n", "<leader>K", function()
-      Snacks.terminal({ "cppman", vim.fn.expand("<cword>") })
+      Snacks.terminal({ "cppman", "-p", "less", vim.fn.expand("<cword>") })
     end, { buffer = ev.buf, desc = "cppman docs" })
   end,
 })
