@@ -18,15 +18,19 @@ Snippets: `lua/plugins/luasnips/tex/`
 | **texlab** | LSP: completions, go-to-definition, hover, diagnostics |
 | **LuaSnip** | All the snippets below |
 
-### PDF viewer — Zathura (install if missing)
+### PDF viewer — Sioyek (install if missing)
 
 ```bash
-sudo pacman -S zathura zathura-pdf-mupdf
+yay -S sioyek-git   # AUR, not in the official repos
 ```
 
-Zathura supports **SyncTeX** — forward search (Neovim → PDF) and inverse search
-(click in PDF → jump to line). Alternative: replace `"zathura"` with `"evince"`
-or `"okular"` in `lua/plugins/vimtex.lua`.
+Sioyek supports **SyncTeX** — forward search (Neovim → PDF) and inverse search
+(PDF → jump to line). Vimtex auto-configures inverse search for Sioyek, no
+manual setup needed. Alternative: replace `"sioyek"` with `"evince"` or
+`"okular"` in `lua/plugins/vimtex.lua`.
+
+(Previously used Zathura — dropped after a mupdf 1.28.0 regression made it
+hang at 100% CPU on some PDFs; see `~/hypr-dotfiles`'s CHANGELOG for details.)
 
 ---
 
@@ -49,7 +53,7 @@ or `"okular"` in `lua/plugins/vimtex.lua`.
 
 | Key | Action |
 | --- | ------ |
-| `\lv` | Open PDF in Zathura (forward search to cursor position) |
+| `\lv` | Open PDF in Sioyek (forward search to cursor position) |
 
 ### Navigation
 
@@ -508,11 +512,13 @@ sudo pacman -S texlive-most   # broad meta-package
 1. Are you inside a math environment? (`in_mathzone` only fires inside `$`, `equation`, `align`, etc.)
 2. Is vimtex running? (`:VimtexStatus`)
 
-**Forward search to PDF** — cursor in the `.tex` file → `\lv`. Zathura opens
+**Forward search to PDF** — cursor in the `.tex` file → `\lv`. Sioyek opens
 to the exact page and line. Requires SyncTeX (enabled by default with latexmk).
 
-**Inverse search (PDF → Neovim)** — in Zathura press `Ctrl+click` on the PDF.
-It opens Neovim at the corresponding source line. Requires Zathura + synctex.
+**Inverse search (PDF → Neovim)** — in Sioyek press `F4` to toggle synctex
+mode, then right-click on the PDF. It opens Neovim at the corresponding
+source line. (Sioyek's default binding — right-click alone does nothing until
+synctex mode is toggled on; see `/etc/sioyek/keys.config`'s `toggle_synctex`.)
 
 **Compilation errors** — `\le` opens the quickfix list of errors with file/line.
 Press `Enter` on an error to jump to it.

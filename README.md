@@ -12,7 +12,7 @@ more — this config layers personal plugins and snippets on top of it.
 # 1. Install dependencies (Arch Linux)
 sudo pacman -S neovim git ripgrep fd unzip nodejs npm
 sudo pacman -S clang cmake ninja ccache   # C++ toolchain (ccache speeds up rebuilds)
-sudo pacman -S zathura zathura-pdf-mupdf  # LaTeX PDF viewer
+yay -S sioyek-git                         # LaTeX PDF viewer (AUR)
 paru -S cppman-git                        # C++ stdlib docs (AUR)
 cppman -c                                 # Cache all cppreference pages (~5 min, one-time)
 
