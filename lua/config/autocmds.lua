@@ -63,6 +63,17 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Tutor: fall back to plain sign rendering. Snacks' statuscolumn dedupes
+-- same-line signs by keeping the first extmark it sees, but :Tutor's own
+-- line-highlight extmark (no sign_text) is created before its ✓/✗ mark
+-- extmark, so Snacks picks the blank one and the ✓/✗ never shows.
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "tutor",
+  callback = function()
+    vim.opt_local.statuscolumn = ""
+  end,
+})
+
 -- Auto-commit lazy-lock.json after `:Lazy update`/`:Lazy sync` (local commit only, push manually)
 vim.api.nvim_create_autocmd("User", {
   pattern = "LazySync",
