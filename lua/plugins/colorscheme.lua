@@ -102,7 +102,9 @@ return {
     {
         "neanias/everforest-nvim",
         lazy = true,
-        opts = { background = "medium" },
+        config = function()
+            require("everforest").setup({ background = "medium" })
+        end,
     },
 
     -- Rose Pine (dark: rose-pine, light: rose-pine-dawn)
