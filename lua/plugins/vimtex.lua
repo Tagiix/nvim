@@ -4,8 +4,7 @@ return {
   {
     "lervag/vimtex",
     init = function()
-      vim.fn.setenv("QT_QPA_PLATFORM", "xcb")
-      vim.g.vimtex_view_method = "sioyek"
+      vim.g.vimtex_view_method = "zathura"
       vim.g.vimtex_compiler_latexmk = {
         out_dir = "build",
       }
