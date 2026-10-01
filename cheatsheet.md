@@ -8,13 +8,14 @@
 
 | Key | Action |
 |-----|--------|
-| `<leader>ff` | Find file |
-| `<leader>fg` | Live grep (search text) |
+| `<leader>ff` / `<leader><space>` | Find file |
+| `<leader>fg` | Find file (git-tracked only) |
+| `<leader>/`  | Live grep (search text in project) |
 | `<leader>fr` | Recent files |
-| `<leader>fb` | Browse open buffers |
+| `<leader>fb` / `<leader>,` | Browse open buffers |
 | `<leader>fn` | New file |
 | `<leader>e`  | File explorer (neo-tree) |
-| `<leader>/`  | Search in current buffer |
+| `<leader>sb` | Search in current buffer |
 | `<C-h/j/k/l>` | Move between windows |
 | `H` / `L`   | Prev / next buffer |
 | `gx`         | Open URL under cursor |
@@ -29,7 +30,7 @@
 | `gd`          | Go to definition |
 | `gD`          | Go to declaration |
 | `gr`          | References |
-| `gi`          | Implementations |
+| `gI`          | Implementations |
 | `gy`          | Type definition |
 | `gpd`         | **Preview** definition (float, stay in place) |
 | `gpr`         | **Preview** references |
@@ -57,18 +58,25 @@
 
 | Key | Action |
 |-----|--------|
-| `<leader>gg` | Open Lazygit |
-| `<leader>gj` | Next hunk |
-| `<leader>gk` | Prev hunk |
-| `<leader>gs` | Stage hunk |
-| `<leader>gr` | Reset hunk |
-| `<leader>gS` | Stage buffer |
-| `<leader>gR` | Reset buffer |
-| `<leader>gp` | Preview hunk |
-| `<leader>gb` | Blame line |
-| `<leader>gd` | Diff against index |
-| `<leader>gD` | Diff against last commit |
+| `<leader>gg` | Open Lazygit (only mapped once `lazygit` is installed) |
+| `]h` / `[h`  | Next / prev hunk |
+| `<leader>ghs` | Stage hunk |
+| `<leader>ghr` | Reset hunk |
+| `<leader>ghS` | Stage buffer |
+| `<leader>ghR` | Reset buffer |
+| `<leader>ghu` | Undo stage hunk |
+| `<leader>ghp` | Preview hunk |
+| `<leader>gb` / `<leader>ghb` | Blame line |
+| `<leader>ghd` | Diff this file against index |
+| `<leader>ghD` | Diff this file against last commit |
+| `<leader>gs` | Git status (changed files) |
+| `<leader>gd` | Git diff (all hunks) |
+| `<leader>gD` | Git diff against origin |
+| `<leader>gS` | Git stash list |
 | `<leader>gl` | Git log |
+| `<leader>gf` | History of current file |
+
+> Hunk keys (`]h`, `<leader>gh…`) only exist in buffers inside a git repository.
 
 ---
 
@@ -79,11 +87,12 @@
 | `<leader>bd` | Delete buffer |
 | `<leader>bb` | Switch to other buffer |
 | `<leader>bo` | Delete all other buffers |
-| `\|`         | Split vertical |
-| `-`          | Split horizontal |
+| `<leader>\|` | Split vertical |
+| `<leader>-`  | Split horizontal |
 | `<leader>wd` | Delete window |
-| `<C-\>`      | Toggle terminal |
-| `<leader>ft` | New terminal (cwd) |
+| `<C-/>`      | Toggle terminal |
+| `<leader>ft` | Terminal (project root) |
+| `<leader>fT` | Terminal (cwd) |
 
 ---
 
@@ -99,35 +108,21 @@
 
 ---
 
-## Surround  (mini.surround)
-
-| Key | Action |
-|-----|--------|
-| `gsa` + motion + char | **A**dd surround |
-| `gsd` + char | **D**elete surround |
-| `gsr` + old + new | **R**eplace surround |
-| `gsf` / `gsF` | Find surround →  / ← |
-| `gsh` + char | **H**ighlight surround |
-
-> Example: `gsaiw"` → surround word with `"` · `gsd"` → remove `"` · `gsr"'` → change `"` to `'`
-
----
-
 ## Search  (`<leader>s…`)
 
 | Key | Action |
 |-----|--------|
-| `<leader>sg` | Grep (live) |
-| `<leader>sG` | Grep word under cursor |
+| `<leader>sg` | Grep (project root) |
+| `<leader>sG` | Grep (cwd) |
 | `<leader>sb` | Search buffer lines |
 | `<leader>sd` | Search diagnostics |
 | `<leader>sh` | Search help tags |
 | `<leader>sk` | Search keymaps |
 | `<leader>sm` | Search marks |
-| `<leader>sn` | Noice message history |
+| `<leader>snh` | Noice message history |
 | `<leader>sr` | Search & replace (grug-far) |
-| `<leader>sw` | Search word (cwd) |
-| `<leader>sW` | Search WORD (cwd) |
+| `<leader>sw` | Grep word under cursor / selection (project root) |
+| `<leader>sW` | Grep word under cursor / selection (cwd) |
 
 ---
 
@@ -150,11 +145,12 @@
 
 ---
 
-## Completions  (nvim-cmp / blink)
+## Completions  (nvim-cmp)
 
 | Key | Action |
 |-----|--------|
-| `<Tab>` / `<S-Tab>` | Next / prev completion item |
+| `<C-n>` / `<C-p>` | Next / prev completion item |
+| `<Tab>` | Accept Supermaven suggestion / jump to next snippet node |
 | `<CR>` | Confirm selection |
 | `<C-Space>` | Trigger completion |
 | `<C-e>` | Abort completion |
@@ -200,6 +196,24 @@
 
 ---
 
+## Claude  (`<leader>a…`)
+
+| Key | Action |
+|-----|--------|
+| `<leader>ac` | Toggle Claude pane |
+| `<leader>af` | Focus Claude pane |
+| `<leader>ab` | Add current buffer to Claude's context |
+| `<leader>as` | Send selection to Claude (visual) |
+| `<leader>aa` / `<leader>ad` | Accept / deny proposed diff |
+| `<leader>an` | Tutor: where am I / next step |
+| `<leader>ah` | Tutor: hint, no solution |
+| `<leader>ak` | Tutor: check my current file |
+| `<leader>aq` | Tutor: ask a question (n/v) |
+
+> Tutor keys rely on the project's `CLAUDE.md` to define what a hint or a check is.
+
+---
+
 ## Neovim Tips  (`<leader>nt…`)
 
 | Key | Action |
@@ -236,7 +250,7 @@
 | `<leader>md` | Launch debugger (cmake-tools, picks target auto) |
 | `<leader>db` | Toggle breakpoint |
 | `<leader>dc` | Continue / start |
-| `<leader>ds` | Step over |
+| `<leader>dO` | Step over |
 | `<leader>di` | Step into |
 | `<leader>do` | Step out |
 | `<leader>du` | Toggle DAP UI |

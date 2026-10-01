@@ -79,9 +79,10 @@ vim.fn.setenv("GEMINI_API_KEY", "your-key-here")
 │       ├── leetcode.lua              # LeetCode plugin
 │       ├── luasnips.lua              # LuaSnip engine + from_lua loader
 │       ├── mason.lua                 # LSP installer (clangd, codelldb, pyright)
-│       ├── python.lua                # Python extra (basedpyright, ruff, venv-selector)
+│       ├── python.lua                # Python extra (pyright, ruff, venv-selector)
 │       ├── vimtex.lua                # LaTeX (viewer + ChkTeX config)
 │       ├── neovim-tips.lua           # Neovim tips popup
+│       ├── claude-tutor.lua          # Tutor keys for the Claude pane (<leader>an/ah/ak/aq)
 │       └── luasnips/                 # Custom LuaSnip snippets
 │           ├── bib.lua               # BibTeX entry snippets (.bib)
 │           └── tex/                  # LaTeX snippets (.tex)
@@ -102,7 +103,7 @@ vim.fn.setenv("GEMINI_API_KEY", "your-key-here")
 | Language | LSP | Formatter | Extra |
 |----------|-----|-----------|-------|
 | C++ | clangd | clang-format | `lang.clangd` |
-| Python | basedpyright | ruff | `lang.python` |
+| Python | pyright | ruff | `lang.python` |
 | LaTeX | texlab | — | `lang.tex` + vimtex |
 | Rust | rust-analyzer | rustfmt | `lang.rust` |
 | JSON | jsonls | prettier | `lang.json` |

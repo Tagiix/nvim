@@ -9,7 +9,7 @@ Autocmds + keymaps: `lua/config/autocmds.lua`
 
 | Tool | Role |
 |------|------|
-| **basedpyright** | LSP: type checking, completions, go-to-definition, hover |
+| **pyright** | LSP: type checking, completions, go-to-definition, hover |
 | **ruff** | Linter + formatter (replaces flake8, black, isort) |
 | **venv-selector.nvim** | Virtual environment picker |
 | **nvim-treesitter** | Python syntax highlighting and text objects |
@@ -22,13 +22,13 @@ All installed automatically via Mason on first launch — no manual setup.
 
 | Key | Action |
 |-----|--------|
-| `<leader>dp` | Open this Python guide |
+| `<leader>Dp` | Open this Python guide |
 | `<leader>rp` | Run current file in a terminal (`python3 %`) |
 | `<leader>ri` | Open interactive Python REPL |
 
 ---
 
-## LSP Features  (basedpyright)
+## LSP Features  (pyright)
 
 These work everywhere via LazyVim's defaults:
 
@@ -57,10 +57,12 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        basedpyright = {
+        pyright = {
           settings = {
-            basedpyright = {
-              typeCheckingMode = "basic",  -- "off" | "basic" | "standard" | "strict" | "all"
+            python = {
+              analysis = {
+                typeCheckingMode = "basic",  -- "off" | "basic" | "standard" | "strict"
+              },
             },
           },
         },
@@ -104,7 +106,7 @@ ignore = ["E501"]           # ignore line-too-long if you prefer
 ```
 
 Opens a picker listing all virtualenvs found in your home directory (`.venv`, `venv`, `env`, conda envs, etc.).
-Selecting one tells **basedpyright and ruff** to use that environment's Python and installed packages.
+Selecting one tells **pyright and ruff** to use that environment's Python and installed packages.
 
 ### Creating a venv from the terminal
 
@@ -177,30 +179,43 @@ ruff format .         # format all files
 
 ## Testing
 
-Tests are not set up by default. The easiest path is running pytest from the terminal:
+neotest + neotest-python are set up (`lua/plugins/neotest.lua`), running pytest.
+pytest itself must be installed in the project's venv.
+
+| Key | Action |
+|-----|--------|
+| `<leader>tr` | Run the test under the cursor |
+| `<leader>tf` | Run all tests in this file |
+| `<leader>to` | Show test output |
+| `<leader>ts` | Toggle the test summary panel |
+
+Or from a terminal (`<C-/>`):
 
 ```
-<leader>ri      # open a terminal
 pytest tests/   # run your test suite
 pytest -x       # stop at first failure
 pytest -v       # verbose
 pytest -k "my_test_name"  # run a specific test
 ```
 
-For in-editor test running, you can add `neotest` + `neotest-python` later —
-ask Claude to set it up when you're ready.
-
 ---
 
 ## Debugging
 
-Not installed by default. When you want a full debugger (breakpoints, step through, watch variables):
+nvim-dap + nvim-dap-python are installed, with debugpy from Mason.
 
-```
-:MasonInstall debugpy
-```
-
-Then ask Claude to add `nvim-dap` + `nvim-dap-python` to your config.
+| Key | Action |
+|-----|--------|
+| `<leader>db` | Toggle breakpoint |
+| `<leader>dB` | Conditional breakpoint |
+| `<leader>dc` | Start / continue |
+| `<leader>dO` | Step over |
+| `<leader>di` / `<leader>do` | Step into / out |
+| `<leader>dC` | Run to cursor |
+| `<leader>du` | Toggle DAP UI |
+| `<leader>dt` | Terminate |
+| `<leader>dPt` | Debug the test method under the cursor |
+| `<leader>dPc` | Debug the test class under the cursor |
 
 ---
 
@@ -209,7 +224,6 @@ Then ask Claude to add `nvim-dap` + `nvim-dap-python` to your config.
 | Command | Action |
 |---------|--------|
 | `:Mason` | Open Mason UI — install/uninstall tools |
-| `:MasonInstall debugpy` | Install the Python debugger |
 | `:LspInfo` | Show active LSP servers for current file |
 | `:LspRestart` | Restart LSP (useful after installing packages) |
 | `<leader>cv` | Select virtualenv |
@@ -221,7 +235,7 @@ Then ask Claude to add `nvim-dap` + `nvim-dap-python` to your config.
 
 **LSP doesn't see my installed packages?**
 You need to select the right virtualenv. Run `<leader>cv` and pick the venv
-that has your packages. Then `:LspRestart` to reload basedpyright.
+that has your packages. Then `:LspRestart` to reload pyright.
 
 **Ruff isn't formatting on save?**
 LazyVim formats on save by default. If it's not working, check `:ConformInfo`
@@ -232,10 +246,10 @@ Ruff handles this via `ruff_organize_imports` formatter. Use `<leader>ca` →
 "Organize imports" for a one-shot sort, or add it to `formatters_by_ft` in
 `lua/plugins/python.lua` for auto-sort on save.
 
-**False positive type errors from basedpyright?**
+**False positive type errors from pyright?**
 Lower the type checking mode to `"basic"` or `"off"` for loose codebases.
 Or add `# type: ignore` at the end of a line to suppress a specific error.
 
 **Speed up diagnostics in large files?**
-basedpyright is fast but can lag in huge files. Lower `typeCheckingMode`
+pyright is fast but can lag in huge files. Lower `typeCheckingMode`
 or disable `diagnosticMode = "workspace"` to only check open files.
