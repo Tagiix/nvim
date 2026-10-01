@@ -2,7 +2,7 @@
 -- Each key sends a short request to the Claude Code pane, naming the current
 -- file and position. What "hint" / "check" / "where am I" mean is defined by
 -- the project's own CLAUDE.md, so these work in any project that has one
--- (written for ~/projects/esl_statistical_learning).
+-- (written for ~/code/python-ESL).
 
 -- "(current file: `esl/cv.py`, line 12)" or "…, lines 12-30)" in visual mode
 local function location()
