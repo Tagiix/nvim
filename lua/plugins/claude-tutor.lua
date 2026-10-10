@@ -1,8 +1,9 @@
 -- Tutor keys on top of LazyVim's claudecode extra (<leader>ac, <leader>af, …).
 -- Each key sends a short request to the Claude Code pane, naming the current
--- file and position. What "hint" / "check" / "where am I" mean is defined by
--- the project's own CLAUDE.md, so these work in any project that has one
--- (written for ~/code/python-ESL).
+-- file and position. What "hint" / "check" mean is defined by the project's
+-- own CLAUDE.md, so these work in any project that has one (written for
+-- ~/code/python-ESL). "Where am I" and the pre-written hints (<leader>an,
+-- <leader>ah) are offline: lua/plan.lua, mapped in config/keymaps.lua.
 
 -- "(current file: `esl/cv.py`, line 12)" or "…, lines 12-30)" in visual mode
 local function location()
@@ -42,14 +43,9 @@ return {
   "coder/claudecode.nvim",
   keys = {
     {
-      "<leader>an",
-      tutor("Tutor request: where am I. Find my current step in PLAN.md and tell me what is next."),
-      desc = "Tutor: where am I / next step",
-    },
-    {
-      "<leader>ah",
+      "<leader>aH",
       tutor("Tutor request: hint. Give me one hint on my current step, without the solution."),
-      desc = "Tutor: hint",
+      desc = "Tutor: hint from Claude (reads my code)",
     },
     {
       "<leader>ak",

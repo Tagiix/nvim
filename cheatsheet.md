@@ -205,8 +205,10 @@
 | `<leader>ab` | Add current buffer to Claude's context |
 | `<leader>as` | Send selection to Claude (visual) |
 | `<leader>aa` / `<leader>ad` | Accept / deny proposed diff |
-| `<leader>an` | Tutor: where am I / next step |
-| `<leader>ah` | Tutor: hint, no solution |
+| `<leader>an` | Plan: where am I / next step (offline, reads `PLAN.md`) |
+| `<leader>ax` | Plan: tick the current step done |
+| `<leader>ah` | Plan: pre-written hint for the current step, next level on each press (offline) |
+| `<leader>aH` | Tutor: hint from Claude, which reads your code |
 | `<leader>ak` | Tutor: check my current file |
 | `<leader>aq` | Tutor: ask a question (n/v) |
 

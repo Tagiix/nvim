@@ -45,3 +45,8 @@ vim.keymap.set("n", "<leader>Ds", function() open_doc("luasnip.md")  end, { desc
 
 -- LeetCode: quick language switch
 vim.keymap.set("n", "<leader>ll", "<cmd>Leet lang<cr>", { desc = "LeetCode: switch language" })
+
+-- PLAN.md progress, offline (lua/plan.lua)
+vim.keymap.set("n", "<leader>an", function() require("plan").show() end, { desc = "Plan: where am I / next step" })
+vim.keymap.set("n", "<leader>ah", function() require("plan").hint() end, { desc = "Plan: next hint for current step" })
+vim.keymap.set("n", "<leader>ax", function() require("plan").done() end, { desc = "Plan: tick current step done" })
