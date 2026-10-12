@@ -1,0 +1,2421 @@
+{
+  "phy-art — Physics article": {
+    "scope": "latex",
+    "prefix": "phy-art",
+    "description": "Physics article",
+    "body": [
+      "\\\\documentclass[letterpaper,11pt]{article}",
+      "\\\\usepackage[left=1.6cm,right=1.6cm,top=2.5cm,bottom=2.5cm,headheight=1.0cm]{geometry}",
+      "\\\\usepackage[activeacute,spanish,es-tabla]{babel}",
+      "\\\\usepackage[utf8]{inputenc}",
+      "\\\\usepackage{amsthm}",
+      "\\\\usepackage[tbtags]{amsmath}",
+      "\\\\usepackage{amssymb}",
+      "\\\\usepackage{enumitem}",
+      "\\\\usepackage{siunitx}",
+      "\\\\usepackage{tikz}",
+      "\\\\usepackage{pgfplots}",
+      "\\\\usepackage{wrapfig}",
+      "\\\\usepackage{multirow}",
+      "\\\\usepackage{array}",
+      "\\\\usepackage{multicol}",
+      "\\\\usepackage{float}",
+      "\\\\usepackage[hyphens]{url}",
+      "\\\\usepackage[hidelinks]{hyperref}",
+      "\\\\usepackage{bookmark}",
+      "\\\\usepackage[nottoc]{tocbibind}",
+      "\\\\usepackage{cleveref}",
+      "\\\\usepackage{caption}",
+      "\\\\usepackage{natbib}",
+      "\\\\usepackage{titling}",
+      "\\\\usepackage{setspace}",
+      "\\\\usepackage{esvect}",
+      "\\\\usepackage{cellspace}",
+      "\\\\usepackage{makecell}",
+      "\\\\usepackage{fancyhdr}",
+      "\\\\usepackage{titlesec}",
+      "%\\\\usepackage{lipsum}",
+      "",
+      "%Math",
+      "\\\\decimalpoint",
+      "\\\\newcommand\\\\numberthis{\\\\addtocounter{equation}{1}\\\\tag{\\\\theequation}}",
+      "\\\\numberwithin{equation}{section}",
+      "",
+      "%Diagrams and plots",
+      "\\\\pgfplotsset{compat=1.18,ytick style={draw=none},xtick style={draw=none},width=9.0cm,height=8.3cm}",
+      "",
+      "%Bibliography and citations",
+      "\\\\setcitestyle{square,comma,numbers,sort}",
+      "",
+      "%Formatting",
+      "\\\\hypersetup{breaklinks=true}",
+      "\\\\titlespacing*{\\\\section}{0pt}{0.2cm}{0.1cm}",
+      "\\\\titlespacing*{\\\\subsection}{0pt}{0.2cm}{0.1cm}",
+      "\\\\titleformat{\\\\section}{\\\\centering\\\\large\\\\scshape}{\\\\thesection.}{0.5em}{}",
+      "\\\\titleformat{\\\\subsection}{\\\\centering\\\\normalsize\\\\scshape}{\\\\thesubsection.}{0.5em}{}",
+      "",
+      "%Layout",
+      "\\\\setlength{\\\\textfloatsep}{0.1cm}",
+      "\\\\allowdisplaybreaks",
+      "%\\\\linespread{1.2}",
+      "\\\\setlength\\\\parindent{0pt}",
+      "\\\\setlength\\\\columnsep{0.5cm}",
+      "\\\\setlength{\\\\parskip}{0.35cm}",
+      "\\\\renewcommand{\\\\headruleskip}{2mm}",
+      "",
+      "%Tables",
+      "\\\\cellspacetoplimit 11pt",
+      "\\\\cellspacebottomlimit 10pt",
+      "",
+      "%fancyhdr",
+      "",
+      "\\\\fancypagestyle{first}{",
+      "\t\\\\fancyheadoffset{0.8cm}",
+      "\t\\\\pagestyle{fancy}",
+      "\t\\\\fancyhf{}",
+      "\t\\\\rhead{\\\\thepage\\\\hspace{0.8cm}}",
+      "\t\\\\lhead{\\\\hspace{0.8cm} ${1}}",
+      "}",
+      "",
+      "\\\\pagestyle{fancy}{",
+      "\t\\\\fancyhf{}",
+      "\t\\\\rhead{\\\\thepage\\\\hspace{0.8cm}}",
+      "\t\\\\lhead{\\\\hspace{0.8cm} ${2}}",
+      "}",
+      "",
+      "%Metadata",
+      "",
+      "\\\\title{\\\\vspace{-2.0cm}\\\\Huge ${3}\\\\vspace{-0.6cm}}",
+      "%\\\\date{\\\\today}",
+      "\\\\author{\\\\normalsize ${4}}",
+      "\\\\date{\\\\vspace{-1.5cm}}",
+      "%\\\\hypersetup{",
+      "\t%pdftitle={},",
+      "\t%pdfsubject={},",
+      "\t%pdfauthor={},",
+      "\t%pdfkeywords={}",
+      "%}",
+      "",
+      "%Macros",
+      "",
+      "%Operators",
+      "\\\\DeclarePairedDelimiter\\\\bra{\\\\langle}{\\\\rvert}",
+      "\\\\DeclarePairedDelimiter\\\\ket{\\\\lvert}{\\\\rangle}",
+      "\\\\DeclarePairedDelimiterX\\\\braket[2]{\\\\langle}{\\\\rangle}{#1\\\\,\\\\delimsize\\\\vert\\\\,\\\\mathopen{}#2}",
+      "",
+      "%Trigonometric functions",
+      "\\\\DeclareMathOperator{\\\\arccot}{arccot}",
+      "\\\\DeclareMathOperator{\\\\arcsec}{arcsec}",
+      "\\\\DeclareMathOperator{\\\\arccsc}{arccsc}",
+      "\\\\DeclareMathOperator{\\\\sech}{sech}",
+      "\\\\DeclareMathOperator{\\\\csch}{csch}",
+      "\\\\DeclareMathOperator{\\\\arcsinh}{arcsinh}",
+      "\\\\DeclareMathOperator{\\\\arccosh}{arccosh}",
+      "\\\\DeclareMathOperator{\\\\arctanh}{arctanh}",
+      "\\\\DeclareMathOperator{\\\\arccoth}{arccoth}",
+      "\\\\DeclareMathOperator{\\\\arcsech}{arcsech}",
+      "\\\\DeclareMathOperator{\\\\arccsch}{arccsch}",
+      "",
+      "\\\\begin{document}",
+      "\\\\maketitle",
+      "\\\\thispagestyle{first}",
+      "\\\\begin{multicols}{2}",
+      "\\\\begin{spacing}{0.85}",
+      "\\\\textbf{\\\\small\\\\textit{Abstract} -- ${5}}",
+      "",
+      "\\\\textbf{\\\\small\\\\textit{Key terms} -- ${6}}",
+      "\\\\vspace{-0.2cm}",
+      "\\\\end{spacing}",
+      "",
+      "\\\\section{${7}}",
+      "",
+      "${8}",
+      "",
+      "\\\\end{multicols}",
+      "\\\\end{document}"
+    ]
+  },
+  "math-notes — Math notes": {
+    "scope": "latex",
+    "prefix": "math-notes",
+    "description": "Math notes",
+    "body": [
+      "\\\\newcommand{\\\\notestitle}{${1:Title}}",
+      "\\\\newcommand{\\\\notesprof}{${2:Profesor/course}}",
+      "\\\\newcommand{\\\\notesauthor}{${3:Author}}",
+      "",
+      "\\\\input{../pream.tex}",
+      "\\\\begin{document}",
+      "% \\\\pagenumbering{roman}",
+      "% \\\\maketitle",
+      "% \\\\thispagestyle{plain}",
+      "% \\\\tableofcontents",
+      "% \\\\newpage",
+      "% \\\\pagestyle{title-subsection}",
+      "% \\\\pagenumbering{arabic}",
+      "",
+      "\\\\input{lec_01.tex}",
+      "",
+      "\\\\input{../eof.tex}",
+      "\\\\end{document}"
+    ]
+  },
+  "writing — Writing": {
+    "scope": "latex",
+    "prefix": "writing",
+    "description": "Writing",
+    "body": [
+      "\\\\documentclass[letterpaper,twoside,11pt]{article}",
+      "\\\\usepackage[left=1.6cm,right=1.6cm,top=2.5cm,bottom=2.0cm,headheight=1.0cm]{geometry}",
+      "\\\\usepackage[activeacute,spanish,es-tabla]{babel}",
+      "\\\\usepackage[utf8]{inputenc}",
+      "\\\\usepackage[tbtags]{amsmath}",
+      "\\\\usepackage{amssymb}",
+      "\\\\usepackage{enumitem}",
+      "\\\\usepackage{multicol}",
+      "\\\\usepackage[hyphens]{url}",
+      "\\\\usepackage[hidelinks]{hyperref}",
+      "\\\\usepackage{bookmark}",
+      "\\\\usepackage[nottoc]{tocbibind}",
+      "\\\\usepackage{cleveref}",
+      "\\\\usepackage{natbib}",
+      "\\\\usepackage{ebgaramond}",
+      "\\\\usepackage{fancyhdr}",
+      "\\\\usepackage{titlesec}",
+      "%\\\\usepackage{lipsum}",
+      "",
+      "%Bibliography and citations",
+      "\\\\setcitestyle{square,comma,numbers,sort}",
+      "",
+      "%Math",
+      "\\\\decimalpoint",
+      "\\\\allowdisplaybreaks",
+      "",
+      "%Formatting",
+      "",
+      "\\\\hypersetup{breaklinks=true}",
+      "\\\\titlespacing*{\\\\section}{0pt}{0.2cm}{0.1cm}",
+      "\\\\titlespacing*{\\\\subsection}{0pt}{0.2cm}{0.1cm}",
+      "",
+      "%titlesec",
+      "\\\\titleformat{\\\\section}{\\\\centering\\\\large\\\\scshape}{\\\\thesection.}{0.5em}{}",
+      "\\\\titleformat{\\\\subsection}{\\\\centering\\\\normalsize\\\\scshape}{\\\\thesubsection.}{0.5em}{}",
+      "",
+      "%Layout",
+      "\\\\setlength{\\\\textfloatsep}{0.1cm}",
+      "%\\\\linespread{1.2}",
+      "\\\\setlength\\\\parindent{0pt}",
+      "\\\\setlength\\\\columnsep{0.5cm}",
+      "\\\\setlength{\\\\parskip}{0.35cm}",
+      "\\\\renewcommand{\\\\headruleskip}{2mm}",
+      "",
+      "%fancyhdr",
+      "\\\\fancypagestyle{first}",
+      "{",
+      "\t\\\\fancyheadoffset{0.8cm}",
+      "\t\\\\pagestyle{fancy}",
+      "\t\\\\fancyhf{}",
+      "\t\\\\rhead{\\\\thepage\\\\hspace{0.8cm}}",
+      "\t\\\\lhead{\\\\hspace{0.8cm}\\\\scshape ${1}}",
+      "}",
+      "",
+      "\\\\pagestyle{fancy}",
+      "\\\\fancyhf{}",
+      "\\\\fancyhead[LO]{\\\\hspace{0.8cm}\\\\small\\\\scshape \\$1}",
+      "\\\\fancyhead[RO]{\\\\small\\\\thepage\\\\hspace{0.8cm}}",
+      "\\\\fancyhead[LE]{\\\\hspace{0.8cm}\\\\small\\\\thepage}",
+      "\\\\fancyhead[RE]{\\\\small\\\\scshape\\\\leftmark\\\\hspace{0.8cm}}",
+      "",
+      "\\\\begin{document}",
+      "%\\\\maketitle",
+      "\\\\thispagestyle{first}",
+      "\\\\begin{multicols}{2}",
+      "",
+      "\\\\section{${2}}",
+      "",
+      "${3}",
+      "",
+      "\\\\end{multicols}",
+      "\\\\end{document}"
+    ]
+  },
+  "bib — Bibliography": {
+    "scope": "latex",
+    "prefix": "bib",
+    "description": "Bibliography",
+    "body": [
+      "",
+      "",
+      "\\\\phantomsection",
+      "\\\\bibliography{bibliography}",
+      "\\\\bibliographystyle{siam}",
+      "\\\\Urlmuskip=0mu plus 1mu\\\\relax",
+      "%\\\\phantom{\\\\cite{}}"
+    ]
+  },
+  "min-math — Minimal math template": {
+    "scope": "latex",
+    "prefix": "min-math",
+    "description": "Minimal math template",
+    "body": [
+      "\\\\documentclass{article}",
+      "\\\\usepackage[utf8]{inputenc}",
+      "\\\\usepackage[tbtags]{amsmath}",
+      "",
+      "\\\\title{${1}}",
+      "\\\\author{${2}}",
+      "\\\\date{\\\\today}",
+      "",
+      "\\\\begin{document}",
+      "\\\\maketitle",
+      "",
+      "${3}",
+      "",
+      "\\\\end{document}"
+    ]
+  },
+  "doc — Document class [1/2]": {
+    "scope": "latex",
+    "prefix": "doc",
+    "description": "Document class [1/2]",
+    "body": [
+      "\\\\documentclass{${1:document-class}}"
+    ]
+  },
+  "doc2 — Document class [2/2]": {
+    "scope": "latex",
+    "prefix": "doc2",
+    "description": "Document class [2/2]",
+    "body": [
+      "\\\\documentclass[${1:class-options}]{${2:document-class}}"
+    ]
+  },
+  "pk — Use package [1/2]": {
+    "scope": "latex",
+    "prefix": "pk",
+    "description": "Use package [1/2]",
+    "body": [
+      "\\\\usepackage{${1:package-name}}"
+    ]
+  },
+  "pk2 — Use package [2/2]": {
+    "scope": "latex",
+    "prefix": "pk2",
+    "description": "Use package [2/2]",
+    "body": [
+      "\\\\usepackage[${1:package-options}]{${2:package-name}}"
+    ]
+  },
+  "tl — Title": {
+    "scope": "latex",
+    "prefix": "tl",
+    "description": "Title",
+    "body": [
+      "\\\\title{${1:...}}"
+    ]
+  },
+  "dat — Date": {
+    "scope": "latex",
+    "prefix": "dat",
+    "description": "Date",
+    "body": [
+      "\\\\date{${1:...}}"
+    ]
+  },
+  "aut — Author": {
+    "scope": "latex",
+    "prefix": "aut",
+    "description": "Author",
+    "body": [
+      "\\\\author{${1:...}}"
+    ]
+  },
+  "bd — Begin document": {
+    "scope": "latex",
+    "prefix": "bd",
+    "description": "Begin document",
+    "body": [
+      "\\\\begin{document}",
+      "",
+      "${1}",
+      "",
+      "\\\\end{document}"
+    ]
+  },
+  "scn — Section [1/3]": {
+    "scope": "latex",
+    "prefix": "scn",
+    "description": "Section [1/3]",
+    "body": [
+      "\\\\section{${1:${TM_SELECTED_TEXT:title}}}"
+    ]
+  },
+  "scn2 — Section [2/3]": {
+    "scope": "latex",
+    "prefix": "scn2",
+    "description": "Section [2/3]",
+    "body": [
+      "\\\\section*{${1:${TM_SELECTED_TEXT:title}}}"
+    ]
+  },
+  "scn3 — Section [3/3]": {
+    "scope": "latex",
+    "prefix": "scn3",
+    "description": "Section [3/3]",
+    "body": [
+      "\\\\section[${1:toc-entry}]{${2:${TM_SELECTED_TEXT:title}}}"
+    ]
+  },
+  "sbn — Subection [1/3]": {
+    "scope": "latex",
+    "prefix": "sbn",
+    "description": "Subection [1/3]",
+    "body": [
+      "\\\\subsection{${1:${TM_SELECTED_TEXT:title}}}"
+    ]
+  },
+  "sbn2 — Subection [2/3]": {
+    "scope": "latex",
+    "prefix": "sbn2",
+    "description": "Subection [2/3]",
+    "body": [
+      "\\\\subsection*{${1:${TM_SELECTED_TEXT:title}}}"
+    ]
+  },
+  "sbn3 — Subection [3/3]": {
+    "scope": "latex",
+    "prefix": "sbn3",
+    "description": "Subection [3/3]",
+    "body": [
+      "\\\\subsection[${1:toc-entry}]{${2:${TM_SELECTED_TEXT:title}}}"
+    ]
+  },
+  "ssn — Subsubection [1/3]": {
+    "scope": "latex",
+    "prefix": "ssn",
+    "description": "Subsubection [1/3]",
+    "body": [
+      "\\\\subsubsection{${1:${TM_SELECTED_TEXT:title}}}"
+    ]
+  },
+  "ssn2 — Subsubection [2/3]": {
+    "scope": "latex",
+    "prefix": "ssn2",
+    "description": "Subsubection [2/3]",
+    "body": [
+      "\\\\subsubsection*{${1:${TM_SELECTED_TEXT:title}}}"
+    ]
+  },
+  "ssn3 — Subsubection [3/3]": {
+    "scope": "latex",
+    "prefix": "ssn3",
+    "description": "Subsubection [3/3]",
+    "body": [
+      "\\\\subsubsection[${1:toc-entry}]{${2:${TM_SELECTED_TEXT:title}}}"
+    ]
+  },
+  "mkt — Maketitle": {
+    "scope": "latex",
+    "prefix": "mkt",
+    "description": "Maketitle",
+    "body": [
+      "\\\\maketitle"
+    ]
+  },
+  "toc — Table of contents": {
+    "scope": "latex",
+    "prefix": "toc",
+    "description": "Table of contents",
+    "body": [
+      "\\\\tableofcontents"
+    ]
+  },
+  "lge — Generic label": {
+    "scope": "latex",
+    "prefix": "lge",
+    "description": "Generic label",
+    "body": [
+      "\\\\label{${1:key}}"
+    ]
+  },
+  "lsn — Label section": {
+    "scope": "latex",
+    "prefix": "lsn",
+    "description": "Label section",
+    "body": [
+      "\\\\label{sec:${1:key}}"
+    ]
+  },
+  "lbe — Label equation": {
+    "scope": "latex",
+    "prefix": "lbe",
+    "description": "Label equation",
+    "body": [
+      "\\\\label{eq:${1:key}}"
+    ]
+  },
+  "lfg — Label figure": {
+    "scope": "latex",
+    "prefix": "lfg",
+    "description": "Label figure",
+    "body": [
+      "\\\\label{fig:${1:key}}"
+    ]
+  },
+  "lta — Label table": {
+    "scope": "latex",
+    "prefix": "lta",
+    "description": "Label table",
+    "body": [
+      "\\\\label{tbl:${1:key}}"
+    ]
+  },
+  "rge — Generic cross-reference [1/3]": {
+    "scope": "latex",
+    "prefix": "rge",
+    "description": "Generic cross-reference [1/3]",
+    "body": [
+      "\\\\ref{${1:key}}"
+    ]
+  },
+  "rge2 — Generic cross-reference [2/3]": {
+    "scope": "latex",
+    "prefix": "rge2",
+    "description": "Generic cross-reference [2/3]",
+    "body": [
+      "\\\\cref{${1:key}}"
+    ]
+  },
+  "rge3 — Generic cross-reference [3/3]": {
+    "scope": "latex",
+    "prefix": "rge3",
+    "description": "Generic cross-reference [3/3]",
+    "body": [
+      "\\\\Cref{${1:key}}"
+    ]
+  },
+  "rsn — Reference section [1/3]": {
+    "scope": "latex",
+    "prefix": "rsn",
+    "description": "Reference section [1/3]",
+    "body": [
+      "\\\\ref{sec:${1:key}}"
+    ]
+  },
+  "rsn2 — Reference section [2/3]": {
+    "scope": "latex",
+    "prefix": "rsn2",
+    "description": "Reference section [2/3]",
+    "body": [
+      "\\\\cref{sec:${1:key}}"
+    ]
+  },
+  "rsn3 — Reference section [3/3]": {
+    "scope": "latex",
+    "prefix": "rsn3",
+    "description": "Reference section [3/3]",
+    "body": [
+      "\\\\Cref{sec:${1:key}}"
+    ]
+  },
+  "rfe — Reference equation [1/3]": {
+    "scope": "latex",
+    "prefix": "rfe",
+    "description": "Reference equation [1/3]",
+    "body": [
+      "\\\\eqref{eq:${1:key}}"
+    ]
+  },
+  "rfe2 — Reference equation [2/3]": {
+    "scope": "latex",
+    "prefix": "rfe2",
+    "description": "Reference equation [2/3]",
+    "body": [
+      "\\\\cref{eq:${1:key}}"
+    ]
+  },
+  "rfe3 — Reference equation [3/3]": {
+    "scope": "latex",
+    "prefix": "rfe3",
+    "description": "Reference equation [3/3]",
+    "body": [
+      "\\\\Cref{eq:${1:key}}"
+    ]
+  },
+  "rfg — Reference figure [1/3]": {
+    "scope": "latex",
+    "prefix": "rfg",
+    "description": "Reference figure [1/3]",
+    "body": [
+      "\\\\ref{fig:${1:key}}"
+    ]
+  },
+  "rfg2 — Reference figure [2/3]": {
+    "scope": "latex",
+    "prefix": "rfg2",
+    "description": "Reference figure [2/3]",
+    "body": [
+      "\\\\cref{fig:${1:key}}"
+    ]
+  },
+  "rfg3 — Reference figure [3/3]": {
+    "scope": "latex",
+    "prefix": "rfg3",
+    "description": "Reference figure [3/3]",
+    "body": [
+      "\\\\Cref{fig:${1:key}}"
+    ]
+  },
+  "rta — Reference table [1/3]": {
+    "scope": "latex",
+    "prefix": "rta",
+    "description": "Reference table [1/3]",
+    "body": [
+      "\\\\ref{tbl:${1:key}}"
+    ]
+  },
+  "rta2 — Reference table [2/3]": {
+    "scope": "latex",
+    "prefix": "rta2",
+    "description": "Reference table [2/3]",
+    "body": [
+      "\\\\cref{tbl:${1:key}}"
+    ]
+  },
+  "rta3 — Reference table [3/3]": {
+    "scope": "latex",
+    "prefix": "rta3",
+    "description": "Reference table [3/3]",
+    "body": [
+      "\\\\Cref{tbl:${1:key}}"
+    ]
+  },
+  "mc — Calligraphic math font (math)": {
+    "scope": "latex",
+    "prefix": "mc",
+    "description": "Calligraphic math font (math)",
+    "body": [
+      "\\\\mathcal{${1:${TM_SELECTED_TEXT}}}"
+    ]
+  },
+  "mr — Roman math font (math)": {
+    "scope": "latex",
+    "prefix": "mr",
+    "description": "Roman math font (math)",
+    "body": [
+      "\\\\mathrm{${1:${TM_SELECTED_TEXT}}}"
+    ]
+  },
+  "mb — Bold math font (math)": {
+    "scope": "latex",
+    "prefix": "mb",
+    "description": "Bold math font (math)",
+    "body": [
+      "\\\\mathbf{${1:${TM_SELECTED_TEXT}}}"
+    ]
+  },
+  "mf — Euler Fraktur math font (math)": {
+    "scope": "latex",
+    "prefix": "mf",
+    "description": "Euler Fraktur math font (math)",
+    "body": [
+      "\\\\mathfrak{${1:${TM_SELECTED_TEXT}}}"
+    ]
+  },
+  "mk — Blackboard bold math font (math)": {
+    "scope": "latex",
+    "prefix": "mk",
+    "description": "Blackboard bold math font (math)",
+    "body": [
+      "\\\\mathbb{${1:${TM_SELECTED_TEXT}}}"
+    ]
+  },
+  "mm — Inline display": {
+    "scope": "latex",
+    "prefix": "mm",
+    "description": "Inline display",
+    "body": [
+      "\\$${1:${TM_SELECTED_TEXT}}\\$"
+    ]
+  },
+  "en — Generic environment": {
+    "scope": "latex",
+    "prefix": "en",
+    "description": "Generic environment",
+    "body": [
+      "\\\\begin{${1:env}}",
+      "    ${2:${TM_SELECTED_TEXT}}",
+      "\\\\end{${1}}"
+    ]
+  },
+  "nn — New equation [1/2]": {
+    "scope": "latex",
+    "prefix": "nn",
+    "description": "New equation [1/2]",
+    "body": [
+      "\\\\begin{equation*}",
+      "    ${1:${TM_SELECTED_TEXT}}",
+      "\\\\end{equation*}"
+    ]
+  },
+  "nn2 — New equation [2/2]": {
+    "scope": "latex",
+    "prefix": "nn2",
+    "description": "New equation [2/2]",
+    "body": [
+      "\\\\begin{equation}",
+      "    ${1:${TM_SELECTED_TEXT}}",
+      "\\\\end{equation}"
+    ]
+  },
+  "sp — New split": {
+    "scope": "latex",
+    "prefix": "sp",
+    "description": "New split",
+    "body": [
+      "\\\\begin{split}",
+      "    ${1:${TM_SELECTED_TEXT}}",
+      "\\\\end{split}"
+    ]
+  },
+  "gg — New gather [1/2]": {
+    "scope": "latex",
+    "prefix": "gg",
+    "description": "New gather [1/2]",
+    "body": [
+      "\\\\begin{gather}",
+      "    ${1:${TM_SELECTED_TEXT}}",
+      "\\\\end{gather}"
+    ]
+  },
+  "gg2 — New gather [2/2]": {
+    "scope": "latex",
+    "prefix": "gg2",
+    "description": "New gather [2/2]",
+    "body": [
+      "\\\\begin{gather*}",
+      "    ${1:${TM_SELECTED_TEXT}}",
+      "\\\\end{gather*}"
+    ]
+  },
+  "aa — New align [1/2]": {
+    "scope": "latex",
+    "prefix": "aa",
+    "description": "New align [1/2]",
+    "body": [
+      "\\\\begin{align*}",
+      "    ${1:${TM_SELECTED_TEXT}}",
+      "\\\\end{align*}"
+    ]
+  },
+  "aa2 — New align [2/2]": {
+    "scope": "latex",
+    "prefix": "aa2",
+    "description": "New align [2/2]",
+    "body": [
+      "\\\\begin{align}",
+      "    ${1:${TM_SELECTED_TEXT}}",
+      "\\\\end{align}"
+    ]
+  },
+  "cs — New cases environment (math)": {
+    "scope": "latex",
+    "prefix": "cs",
+    "description": "New cases environment (math)",
+    "body": [
+      "\\\\begin{cases}",
+      "    \\\\hfil ${1} & ${2} \\\\\\\\",
+      "    \\\\hfil ${3} & ${4}",
+      "\\\\end{cases}"
+    ]
+  },
+  "3cs — New cases environment (math)": {
+    "scope": "latex",
+    "prefix": "3cs",
+    "description": "New cases environment (math)",
+    "body": [
+      "\\\\begin{cases}",
+      "    \\\\hfil ${1} & ${2} \\\\\\\\",
+      "    \\\\hfil ${3} & ${4} \\\\\\\\",
+      "    \\\\hfil ${5} & ${6}",
+      "\\\\end{cases}"
+    ]
+  },
+  "tx — Text inside display (math)": {
+    "scope": "latex",
+    "prefix": "tx",
+    "description": "Text inside display (math)",
+    "body": [
+      "\\\\text{${1:${TM_SELECTED_TEXT:text}}}"
+    ]
+  },
+  "b1x1 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "b1x1",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{bmatrix}",
+      "${1} \\\\\\\\",
+      "\\\\end{bmatrix}"
+    ]
+  },
+  "b1x2 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "b1x2",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{bmatrix}",
+      "${1} & ${2} \\\\\\\\",
+      "\\\\end{bmatrix}"
+    ]
+  },
+  "b1x3 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "b1x3",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{bmatrix}",
+      "${1} & ${2} & ${3} \\\\\\\\",
+      "\\\\end{bmatrix}"
+    ]
+  },
+  "b2x1 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "b2x1",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{bmatrix}",
+      "${1} \\\\\\\\",
+      "${2} \\\\\\\\",
+      "\\\\end{bmatrix}"
+    ]
+  },
+  "b2x2 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "b2x2",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{bmatrix}",
+      "${1} & ${2} \\\\\\\\",
+      "${3} & ${4} \\\\\\\\",
+      "\\\\end{bmatrix}"
+    ]
+  },
+  "b2x3 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "b2x3",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{bmatrix}",
+      "${1} & ${2} & ${3} \\\\\\\\",
+      "${4} & ${5} & ${6} \\\\\\\\",
+      "\\\\end{bmatrix}"
+    ]
+  },
+  "b3x1 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "b3x1",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{bmatrix}",
+      "${1} \\\\\\\\",
+      "${2} \\\\\\\\",
+      "${3} \\\\\\\\",
+      "\\\\end{bmatrix}"
+    ]
+  },
+  "b3x2 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "b3x2",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{bmatrix}",
+      "${1} & ${2} \\\\\\\\",
+      "${3} & ${4} \\\\\\\\",
+      "${5} & ${6} \\\\\\\\",
+      "\\\\end{bmatrix}"
+    ]
+  },
+  "b3x3 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "b3x3",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{bmatrix}",
+      "${1} & ${2} & ${3} \\\\\\\\",
+      "${4} & ${5} & ${6} \\\\\\\\",
+      "${7} & ${8} & ${9} \\\\\\\\",
+      "\\\\end{bmatrix}"
+    ]
+  },
+  "p1x1 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "p1x1",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{pmatrix}",
+      "${1} \\\\\\\\",
+      "\\\\end{pmatrix}"
+    ]
+  },
+  "p1x2 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "p1x2",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{pmatrix}",
+      "${1} & ${2} \\\\\\\\",
+      "\\\\end{pmatrix}"
+    ]
+  },
+  "p1x3 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "p1x3",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{pmatrix}",
+      "${1} & ${2} & ${3} \\\\\\\\",
+      "\\\\end{pmatrix}"
+    ]
+  },
+  "p2x1 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "p2x1",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{pmatrix}",
+      "${1} \\\\\\\\",
+      "${2} \\\\\\\\",
+      "\\\\end{pmatrix}"
+    ]
+  },
+  "p2x2 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "p2x2",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{pmatrix}",
+      "${1} & ${2} \\\\\\\\",
+      "${3} & ${4} \\\\\\\\",
+      "\\\\end{pmatrix}"
+    ]
+  },
+  "p2x3 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "p2x3",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{pmatrix}",
+      "${1} & ${2} & ${3} \\\\\\\\",
+      "${4} & ${5} & ${6} \\\\\\\\",
+      "\\\\end{pmatrix}"
+    ]
+  },
+  "p3x1 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "p3x1",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{pmatrix}",
+      "${1} \\\\\\\\",
+      "${2} \\\\\\\\",
+      "${3} \\\\\\\\",
+      "\\\\end{pmatrix}"
+    ]
+  },
+  "p3x2 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "p3x2",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{pmatrix}",
+      "${1} & ${2} \\\\\\\\",
+      "${3} & ${4} \\\\\\\\",
+      "${5} & ${6} \\\\\\\\",
+      "\\\\end{pmatrix}"
+    ]
+  },
+  "p3x3 — New matrix (math)": {
+    "scope": "latex",
+    "prefix": "p3x3",
+    "description": "New matrix (math)",
+    "body": [
+      "\\\\begin{pmatrix}",
+      "${1} & ${2} & ${3} \\\\\\\\",
+      "${4} & ${5} & ${6} \\\\\\\\",
+      "${7} & ${8} & ${9} \\\\\\\\",
+      "\\\\end{pmatrix}"
+    ]
+  },
+  "bx — Boxed formula (math)": {
+    "scope": "latex",
+    "prefix": "bx",
+    "description": "Boxed formula (math)",
+    "body": [
+      "\\\\boxed{${1:${TM_SELECTED_TEXT}}}"
+    ]
+  },
+  "ff — Fraction (math) [1/3]": {
+    "scope": "latex",
+    "prefix": "ff",
+    "description": "Fraction (math) [1/3]",
+    "body": [
+      "\\\\frac{${1}}{${2}}"
+    ]
+  },
+  "ff2 — Fraction (math) [2/3]": {
+    "scope": "latex",
+    "prefix": "ff2",
+    "description": "Fraction (math) [2/3]",
+    "body": [
+      "\\\\dfrac{${1}}{${2}}"
+    ]
+  },
+  "ff3 — Fraction (math) [3/3]": {
+    "scope": "latex",
+    "prefix": "ff3",
+    "description": "Fraction (math) [3/3]",
+    "body": [
+      "\\\\tfrac{${1}}{${2}}"
+    ]
+  },
+  "eq — Congruence relation (math)": {
+    "scope": "latex",
+    "prefix": "eq",
+    "description": "Congruence relation (math)",
+    "body": [
+      "\\\\equiv"
+    ]
+  },
+  "ne — Not equal (math)": {
+    "scope": "latex",
+    "prefix": "ne",
+    "description": "Not equal (math)",
+    "body": [
+      "\\\\ne"
+    ]
+  },
+  "app — Approx (math)": {
+    "scope": "latex",
+    "prefix": "app",
+    "description": "Approx (math)",
+    "body": [
+      "\\\\approx"
+    ]
+  },
+  "le — Less or equal (math)": {
+    "scope": "latex",
+    "prefix": "le",
+    "description": "Less or equal (math)",
+    "body": [
+      "\\\\le"
+    ]
+  },
+  "ge — Greater or equal (math)": {
+    "scope": "latex",
+    "prefix": "ge",
+    "description": "Greater or equal (math)",
+    "body": [
+      "\\\\ge"
+    ]
+  },
+  "sq — Square root (math) [1/3]": {
+    "scope": "latex",
+    "prefix": "sq",
+    "description": "Square root (math) [1/3]",
+    "body": [
+      "\\\\sqrt{${1:${TM_SELECTED_TEXT}}}"
+    ]
+  },
+  "sq2 — Square root (math) [2/3]": {
+    "scope": "latex",
+    "prefix": "sq2",
+    "description": "Square root (math) [2/3]",
+    "body": [
+      "\\\\sqrt[${1:n-th}]{${2:${TM_SELECTED_TEXT}}}"
+    ]
+  },
+  "sq3 — Square root (math) [3/3]": {
+    "scope": "latex",
+    "prefix": "sq3",
+    "description": "Square root (math) [3/3]",
+    "body": [
+      "\\\\sqrt[\\\\leftroot{${1:x}}\\\\uproot{${2:y}} ${3:n-th}]{${4:${TM_SELECTED_TEXT}}}"
+    ]
+  },
+  "pm — Plus minus (math)": {
+    "scope": "latex",
+    "prefix": "pm",
+    "description": "Plus minus (math)",
+    "body": [
+      "\\\\pm"
+    ]
+  },
+  "tm — Times (math)": {
+    "scope": "latex",
+    "prefix": "tm",
+    "description": "Times (math)",
+    "body": [
+      "\\\\times"
+    ]
+  },
+  "cd — Centered dot (math)": {
+    "scope": "latex",
+    "prefix": "cd",
+    "description": "Centered dot (math)",
+    "body": [
+      "\\\\cdot"
+    ]
+  },
+  "lm — Limit (math) [1/2]": {
+    "scope": "latex",
+    "prefix": "lm",
+    "description": "Limit (math) [1/2]",
+    "body": [
+      "\\\\lim_{${1} \\\\to ${2}}"
+    ]
+  },
+  "lm2 — Limit (math) [2/2]": {
+    "scope": "latex",
+    "prefix": "lm2",
+    "description": "Limit (math) [2/2]",
+    "body": [
+      "${1:\\\\lim}"
+    ]
+  },
+  "dd — Lower dots (math)": {
+    "scope": "latex",
+    "prefix": "dd",
+    "description": "Lower dots (math)",
+    "body": [
+      "\\\\ldots"
+    ]
+  },
+  "cr — Centered dots (math)": {
+    "scope": "latex",
+    "prefix": "cr",
+    "description": "Centered dots (math)",
+    "body": [
+      "\\\\cdots"
+    ]
+  },
+  "ovr — Overline (math)": {
+    "scope": "latex",
+    "prefix": "ovr",
+    "description": "Overline (math)",
+    "body": [
+      "\\\\overline{${1:${TM_SELECTED_TEXT}}}"
+    ]
+  },
+  "und — Underline (math)": {
+    "scope": "latex",
+    "prefix": "und",
+    "description": "Underline (math)",
+    "body": [
+      "\\\\underline{${1:${TM_SELECTED_TEXT}}}"
+    ]
+  },
+  "dp — Parenthesis (math)": {
+    "scope": "latex",
+    "prefix": "dp",
+    "description": "Parenthesis (math)",
+    "body": [
+      "\\\\left( ${1:${TM_SELECTED_TEXT}} \\\\right)"
+    ]
+  },
+  "ds — Brackets (math)": {
+    "scope": "latex",
+    "prefix": "ds",
+    "description": "Brackets (math)",
+    "body": [
+      "\\\\left[ ${1:${TM_SELECTED_TEXT}} \\\\right]"
+    ]
+  },
+  "bb — Braces (math)": {
+    "scope": "latex",
+    "prefix": "bb",
+    "description": "Braces (math)",
+    "body": [
+      "\\\\{ ${1:${TM_SELECTED_TEXT}} \\\\}"
+    ]
+  },
+  "db — Extensible braces (math)": {
+    "scope": "latex",
+    "prefix": "db",
+    "description": "Extensible braces (math)",
+    "body": [
+      "\\\\left\\\\{ ${1:${TM_SELECTED_TEXT}} \\\\right\\\\}"
+    ]
+  },
+  "dk — Angle brackets (math) [1/2]": {
+    "scope": "latex",
+    "prefix": "dk",
+    "description": "Angle brackets (math) [1/2]",
+    "body": [
+      "\\\\left\\\\langle ${1:${TM_SELECTED_TEXT}} \\\\right\\\\rangle"
+    ]
+  },
+  "dk2 — Angle brackets (math) [2/2]": {
+    "scope": "latex",
+    "prefix": "dk2",
+    "description": "Angle brackets (math) [2/2]",
+    "body": [
+      "\\\\langle ${1:${TM_SELECTED_TEXT}} \\\\rangle"
+    ]
+  },
+  "da — Pipes (math) [1/2]": {
+    "scope": "latex",
+    "prefix": "da",
+    "description": "Pipes (math) [1/2]",
+    "body": [
+      "\\\\left\\\\lvert ${1:${TM_SELECTED_TEXT}} \\\\right\\\\rvert"
+    ]
+  },
+  "da2 — Pipes (math) [2/2]": {
+    "scope": "latex",
+    "prefix": "da2",
+    "description": "Pipes (math) [2/2]",
+    "body": [
+      "\\\\lvert ${1:${TM_SELECTED_TEXT}} \\\\rvert"
+    ]
+  },
+  "dn — Double pipes (math) [1/2]": {
+    "scope": "latex",
+    "prefix": "dn",
+    "description": "Double pipes (math) [1/2]",
+    "body": [
+      "\\\\left\\\\lVert ${1:${TM_SELECTED_TEXT}} \\\\right\\\\rVert"
+    ]
+  },
+  "dn2 — Double pipes (math) [2/2]": {
+    "scope": "latex",
+    "prefix": "dn2",
+    "description": "Double pipes (math) [2/2]",
+    "body": [
+      "\\\\lVert ${1:${TM_SELECTED_TEXT}} \\\\rVert"
+    ]
+  },
+  "qu — Quad (math)": {
+    "scope": "latex",
+    "prefix": "qu",
+    "description": "Quad (math)",
+    "body": [
+      "\\\\quad"
+    ]
+  },
+  "qq — Double quad (math)": {
+    "scope": "latex",
+    "prefix": "qq",
+    "description": "Double quad (math)",
+    "body": [
+      "\\\\qquad"
+    ]
+  },
+  ".a — Alpha (math)": {
+    "scope": "latex",
+    "prefix": ".a",
+    "description": "Alpha (math)",
+    "body": [
+      "\\\\alpha"
+    ]
+  },
+  ".b — Beta (math)": {
+    "scope": "latex",
+    "prefix": ".b",
+    "description": "Beta (math)",
+    "body": [
+      "\\\\beta"
+    ]
+  },
+  ".c — Chi (math)": {
+    "scope": "latex",
+    "prefix": ".c",
+    "description": "Chi (math)",
+    "body": [
+      "\\\\chi"
+    ]
+  },
+  ".D — Uppercase delta (math)": {
+    "scope": "latex",
+    "prefix": ".D",
+    "description": "Uppercase delta (math)",
+    "body": [
+      "\\\\Delta"
+    ]
+  },
+  ".d — Lowercase delta (math)": {
+    "scope": "latex",
+    "prefix": ".d",
+    "description": "Lowercase delta (math)",
+    "body": [
+      "\\\\delta"
+    ]
+  },
+  ".e — Epsilon (math)": {
+    "scope": "latex",
+    "prefix": ".e",
+    "description": "Epsilon (math)",
+    "body": [
+      "\\\\varepsilon"
+    ]
+  },
+  ".G — Uppercase gamma (math)": {
+    "scope": "latex",
+    "prefix": ".G",
+    "description": "Uppercase gamma (math)",
+    "body": [
+      "\\\\Gamma"
+    ]
+  },
+  ".g — Lowercase gamma (math)": {
+    "scope": "latex",
+    "prefix": ".g",
+    "description": "Lowercase gamma (math)",
+    "body": [
+      "\\\\gamma"
+    ]
+  },
+  ".h — Eta (math)": {
+    "scope": "latex",
+    "prefix": ".h",
+    "description": "Eta (math)",
+    "body": [
+      "\\\\eta"
+    ]
+  },
+  ".i — Iota (math)": {
+    "scope": "latex",
+    "prefix": ".i",
+    "description": "Iota (math)",
+    "body": [
+      "\\\\iota"
+    ]
+  },
+  ".k — Kappa (math)": {
+    "scope": "latex",
+    "prefix": ".k",
+    "description": "Kappa (math)",
+    "body": [
+      "\\\\kappa"
+    ]
+  },
+  ".L — Uppercase lambda (math)": {
+    "scope": "latex",
+    "prefix": ".L",
+    "description": "Uppercase lambda (math)",
+    "body": [
+      "\\\\Lambda"
+    ]
+  },
+  ".l — Lowercase lambda (math)": {
+    "scope": "latex",
+    "prefix": ".l",
+    "description": "Lowercase lambda (math)",
+    "body": [
+      "\\\\lambda"
+    ]
+  },
+  ".m — Mu (math)": {
+    "scope": "latex",
+    "prefix": ".m",
+    "description": "Mu (math)",
+    "body": [
+      "\\\\mu"
+    ]
+  },
+  ".n — Nu (math)": {
+    "scope": "latex",
+    "prefix": ".n",
+    "description": "Nu (math)",
+    "body": [
+      "\\\\nu"
+    ]
+  },
+  ".O — Uppercase omega (math)": {
+    "scope": "latex",
+    "prefix": ".O",
+    "description": "Uppercase omega (math)",
+    "body": [
+      "\\\\Omega"
+    ]
+  },
+  ".o — Lowercase omega (math)": {
+    "scope": "latex",
+    "prefix": ".o",
+    "description": "Lowercase omega (math)",
+    "body": [
+      "\\\\omega"
+    ]
+  },
+  ".Ph — Uppercase phi (math)": {
+    "scope": "latex",
+    "prefix": ".Ph",
+    "description": "Uppercase phi (math)",
+    "body": [
+      "\\\\Phi"
+    ]
+  },
+  ".ph — Lowecase phi (math)": {
+    "scope": "latex",
+    "prefix": ".ph",
+    "description": "Lowecase phi (math)",
+    "body": [
+      "\\\\varphi"
+    ]
+  },
+  ".Pi — Uppercase pi (math)": {
+    "scope": "latex",
+    "prefix": ".Pi",
+    "description": "Uppercase pi (math)",
+    "body": [
+      "\\\\Pi"
+    ]
+  },
+  ".pi — Lowercase pi (math)": {
+    "scope": "latex",
+    "prefix": ".pi",
+    "description": "Lowercase pi (math)",
+    "body": [
+      "\\\\pi"
+    ]
+  },
+  ".Ps — Uppercase psi (math)": {
+    "scope": "latex",
+    "prefix": ".Ps",
+    "description": "Uppercase psi (math)",
+    "body": [
+      "\\\\Psi"
+    ]
+  },
+  ".ps — Lowercase psi (math)": {
+    "scope": "latex",
+    "prefix": ".ps",
+    "description": "Lowercase psi (math)",
+    "body": [
+      "\\\\psi"
+    ]
+  },
+  ".r — Rho (math)": {
+    "scope": "latex",
+    "prefix": ".r",
+    "description": "Rho (math)",
+    "body": [
+      "\\\\rho"
+    ]
+  },
+  ".S — Uppercase sigma (math)": {
+    "scope": "latex",
+    "prefix": ".S",
+    "description": "Uppercase sigma (math)",
+    "body": [
+      "\\\\Sigma"
+    ]
+  },
+  ".s — Lowercase sigma (math)": {
+    "scope": "latex",
+    "prefix": ".s",
+    "description": "Lowercase sigma (math)",
+    "body": [
+      "\\\\sigma"
+    ]
+  },
+  ".ta — Tau (math)": {
+    "scope": "latex",
+    "prefix": ".ta",
+    "description": "Tau (math)",
+    "body": [
+      "\\\\tau"
+    ]
+  },
+  ".Th — Uppercase theta (math)": {
+    "scope": "latex",
+    "prefix": ".Th",
+    "description": "Uppercase theta (math)",
+    "body": [
+      "\\\\Theta"
+    ]
+  },
+  ".th — Lowercase theta (math)": {
+    "scope": "latex",
+    "prefix": ".th",
+    "description": "Lowercase theta (math)",
+    "body": [
+      "\\\\theta"
+    ]
+  },
+  ".U — Uppercase upsilon (math)": {
+    "scope": "latex",
+    "prefix": ".U",
+    "description": "Uppercase upsilon (math)",
+    "body": [
+      "\\\\Upsilon"
+    ]
+  },
+  ".u — Lowecase upsilon (math)": {
+    "scope": "latex",
+    "prefix": ".u",
+    "description": "Lowecase upsilon (math)",
+    "body": [
+      "\\\\upsilon"
+    ]
+  },
+  ".X — Uppercase xi (math)": {
+    "scope": "latex",
+    "prefix": ".X",
+    "description": "Uppercase xi (math)",
+    "body": [
+      "\\\\Xi"
+    ]
+  },
+  ".x — Lowercase xi (math)": {
+    "scope": "latex",
+    "prefix": ".x",
+    "description": "Lowercase xi (math)",
+    "body": [
+      "\\\\xi"
+    ]
+  },
+  ".z — Zeta (math)": {
+    "scope": "latex",
+    "prefix": ".z",
+    "description": "Zeta (math)",
+    "body": [
+      "\\\\zeta"
+    ]
+  },
+  "pt — Partial (math)": {
+    "scope": "latex",
+    "prefix": "pt",
+    "description": "Partial (math)",
+    "body": [
+      "\\\\partial"
+    ]
+  },
+  "fy — Infinity (math)": {
+    "scope": "latex",
+    "prefix": "fy",
+    "description": "Infinity (math)",
+    "body": [
+      "\\\\infty"
+    ]
+  },
+  "nb — Nabla (math)": {
+    "scope": "latex",
+    "prefix": "nb",
+    "description": "Nabla (math)",
+    "body": [
+      "\\\\nabla"
+    ]
+  },
+  "dr — Dot accent (math) [1/4]": {
+    "scope": "latex",
+    "prefix": "dr",
+    "description": "Dot accent (math) [1/4]",
+    "body": [
+      "\\\\dot{${1:${TM_SELECTED_TEXT:...}}}"
+    ]
+  },
+  "dr2 — Dot accent (math) [2/4]": {
+    "scope": "latex",
+    "prefix": "dr2",
+    "description": "Dot accent (math) [2/4]",
+    "body": [
+      "\\\\ddot{${1:${TM_SELECTED_TEXT:...}}}"
+    ]
+  },
+  "dr3 — Dot accent (math) [3/4]": {
+    "scope": "latex",
+    "prefix": "dr3",
+    "description": "Dot accent (math) [3/4]",
+    "body": [
+      "\\\\dddot{${1:${TM_SELECTED_TEXT:...}}}"
+    ]
+  },
+  "dr4 — Dot accent (math) [4/4]": {
+    "scope": "latex",
+    "prefix": "dr4",
+    "description": "Dot accent (math) [4/4]",
+    "body": [
+      "\\\\ddddot{${1:${TM_SELECTED_TEXT:...}}}"
+    ]
+  },
+  "ht — Hat (math) [1/2]": {
+    "scope": "latex",
+    "prefix": "ht",
+    "description": "Hat (math) [1/2]",
+    "body": [
+      "\\\\hat{${1:${TM_SELECTED_TEXT:...}}}"
+    ]
+  },
+  "ht2 — Hat (math) [2/2]": {
+    "scope": "latex",
+    "prefix": "ht2",
+    "description": "Hat (math) [2/2]",
+    "body": [
+      "\\\\widehat{${1:${TM_SELECTED_TEXT:...}}}"
+    ]
+  },
+  "til — Tilde (math) [1/2]": {
+    "scope": "latex",
+    "prefix": "til",
+    "description": "Tilde (math) [1/2]",
+    "body": [
+      "\\\\tilde{${1}}"
+    ]
+  },
+  "til2 — Tilde (math) [2/2]": {
+    "scope": "latex",
+    "prefix": "til2",
+    "description": "Tilde (math) [2/2]",
+    "body": [
+      "\\\\widetilde{${1}}"
+    ]
+  },
+  "vv — Vector (math) [1/2]": {
+    "scope": "latex",
+    "prefix": "vv",
+    "description": "Vector (math) [1/2]",
+    "body": [
+      "\\\\vv{${1:${TM_SELECTED_TEXT:...}}}"
+    ]
+  },
+  "vv2 — Vector (math) [2/2]": {
+    "scope": "latex",
+    "prefix": "vv2",
+    "description": "Vector (math) [2/2]",
+    "body": [
+      "\\\\vec{${1:${TM_SELECTED_TEXT:...}}}"
+    ]
+  },
+  "fa — For all (math)": {
+    "scope": "latex",
+    "prefix": "fa",
+    "description": "For all (math)",
+    "body": [
+      "\\\\forall"
+    ]
+  },
+  "ex — Exists (math)": {
+    "scope": "latex",
+    "prefix": "ex",
+    "description": "Exists (math)",
+    "body": [
+      "\\\\exists"
+    ]
+  },
+  "ip — Implies (math)": {
+    "scope": "latex",
+    "prefix": "ip",
+    "description": "Implies (math)",
+    "body": [
+      "\\\\implies"
+    ]
+  },
+  "iff — If and only if (math)": {
+    "scope": "latex",
+    "prefix": "iff",
+    "description": "If and only if (math)",
+    "body": [
+      "\\\\iff"
+    ]
+  },
+  "in — Belongs to (math)": {
+    "scope": "latex",
+    "prefix": "in",
+    "description": "Belongs to (math)",
+    "body": [
+      "\\\\in"
+    ]
+  },
+  "vc — Empty set (math) [1/2]": {
+    "scope": "latex",
+    "prefix": "vc",
+    "description": "Empty set (math) [1/2]",
+    "body": [
+      "${1:\\\\emptyset}"
+    ]
+  },
+  "vc2 — Empty set (math) [2/2]": {
+    "scope": "latex",
+    "prefix": "vc2",
+    "description": "Empty set (math) [2/2]",
+    "body": [
+      "${1:\\\\varnothing}"
+    ]
+  },
+  "nun — Union (math)": {
+    "scope": "latex",
+    "prefix": "nun",
+    "description": "Union (math)",
+    "body": [
+      "\\\\cup"
+    ]
+  },
+  "nit — Intersection (math)": {
+    "scope": "latex",
+    "prefix": "nit",
+    "description": "Intersection (math)",
+    "body": [
+      "\\\\cap"
+    ]
+  },
+  "sbs — Subset (math)": {
+    "scope": "latex",
+    "prefix": "sbs",
+    "description": "Subset (math)",
+    "body": [
+      "\\\\subset"
+    ]
+  },
+  "sbq — Subset or equals (math) [1/2]": {
+    "scope": "latex",
+    "prefix": "sbq",
+    "description": "Subset or equals (math) [1/2]",
+    "body": [
+      "${1:\\\\subseteq}"
+    ]
+  },
+  "sbq2 — Subset or equals (math) [2/2]": {
+    "scope": "latex",
+    "prefix": "sbq2",
+    "description": "Subset or equals (math) [2/2]",
+    "body": [
+      "${1:\\\\nsubseteq}"
+    ]
+  },
+  "rar — Long right arrow (math)": {
+    "scope": "latex",
+    "prefix": "rar",
+    "description": "Long right arrow (math)",
+    "body": [
+      "\\\\longrightarrow"
+    ]
+  },
+  "to — Long maps to (math)": {
+    "scope": "latex",
+    "prefix": "to",
+    "description": "Long maps to (math)",
+    "body": [
+      "\\\\longmapsto"
+    ]
+  },
+  "sm — Subscript sum (math) [1/2]": {
+    "scope": "latex",
+    "prefix": "sm",
+    "description": "Subscript sum (math) [1/2]",
+    "body": [
+      "\\\\sum_{${1}}"
+    ]
+  },
+  "sm2 — Subscript sum (math) [2/2]": {
+    "scope": "latex",
+    "prefix": "sm2",
+    "description": "Subscript sum (math) [2/2]",
+    "body": [
+      "${1:\\\\sum}"
+    ]
+  },
+  "ss — Definite sum (math)": {
+    "scope": "latex",
+    "prefix": "ss",
+    "description": "Definite sum (math)",
+    "body": [
+      "\\\\sum_{${1}}^{${2}}"
+    ]
+  },
+  "sp — Subscript product (math) [1/2]": {
+    "scope": "latex",
+    "prefix": "sp",
+    "description": "Subscript product (math) [1/2]",
+    "body": [
+      "\\\\prod_{${1}}"
+    ]
+  },
+  "sp2 — Subscript product (math) [2/2]": {
+    "scope": "latex",
+    "prefix": "sp2",
+    "description": "Subscript product (math) [2/2]",
+    "body": [
+      "${1:\\\\prod}"
+    ]
+  },
+  "pp — Definite product (math)": {
+    "scope": "latex",
+    "prefix": "pp",
+    "description": "Definite product (math)",
+    "body": [
+      "\\\\prod_{${1}}^{${2}}"
+    ]
+  },
+  "df — Differential (math)": {
+    "scope": "latex",
+    "prefix": "df",
+    "description": "Differential (math)",
+    "body": [
+      "\\\\dx{${1}}"
+    ]
+  },
+  "der — Derivative (math) [1/2]": {
+    "scope": "latex",
+    "prefix": "der",
+    "description": "Derivative (math) [1/2]",
+    "body": [
+      "\\\\der{${1:func}}{${2:var}}"
+    ]
+  },
+  "der2 — Derivative (math) [2/2]": {
+    "scope": "latex",
+    "prefix": "der2",
+    "description": "Derivative (math) [2/2]",
+    "body": [
+      "\\\\Der{${1:func}}{${2:var}}"
+    ]
+  },
+  "pdr — Partial derivative (math) [1/2]": {
+    "scope": "latex",
+    "prefix": "pdr",
+    "description": "Partial derivative (math) [1/2]",
+    "body": [
+      "\\\\pdr{${1:func}}{${2:var}}"
+    ]
+  },
+  "pdr2 — Partial derivative (math) [2/2]": {
+    "scope": "latex",
+    "prefix": "pdr2",
+    "description": "Partial derivative (math) [2/2]",
+    "body": [
+      "\\\\Pdr{${1:func}}{${2:var}}"
+    ]
+  },
+  "itn — Integral (math) [1/2]": {
+    "scope": "latex",
+    "prefix": "itn",
+    "description": "Integral (math) [1/2]",
+    "body": [
+      "${1:\\\\int}"
+    ]
+  },
+  "itn2 — Integral (math) [2/2]": {
+    "scope": "latex",
+    "prefix": "itn2",
+    "description": "Integral (math) [2/2]",
+    "body": [
+      "${1:\\\\oint}"
+    ]
+  },
+  "its — Subscript integral (math) [1/2]": {
+    "scope": "latex",
+    "prefix": "its",
+    "description": "Subscript integral (math) [1/2]",
+    "body": [
+      "\\\\int_{${1}}"
+    ]
+  },
+  "its2 — Subscript integral (math) [2/2]": {
+    "scope": "latex",
+    "prefix": "its2",
+    "description": "Subscript integral (math) [2/2]",
+    "body": [
+      "\\\\oint_{${1}}"
+    ]
+  },
+  "itd — Definite integral (math)": {
+    "scope": "latex",
+    "prefix": "itd",
+    "description": "Definite integral (math)",
+    "body": [
+      "\\\\int_{${1}}^{${2}}"
+    ]
+  },
+  "url — URLs": {
+    "scope": "latex",
+    "prefix": "url",
+    "description": "URLs",
+    "body": [
+      "\\\\url{${1:${TM_SELECTED_TEXT:url}}}"
+    ]
+  },
+  "foo — Footnote": {
+    "scope": "latex",
+    "prefix": "foo",
+    "description": "Footnote",
+    "body": [
+      "\\\\footnote{${1:${TM_SELECTED_TEXT:text}}}"
+    ]
+  },
+  "cen — Centered environment": {
+    "scope": "latex",
+    "prefix": "cen",
+    "description": "Centered environment",
+    "body": [
+      "\\\\begin{center}",
+      "    ${1:${TM_SELECTED_TEXT}}",
+      "\\\\end{center}"
+    ]
+  },
+  "tz — Unnumbered list": {
+    "scope": "latex",
+    "prefix": "tz",
+    "description": "Unnumbered list",
+    "body": [
+      "\\\\begin{itemize}",
+      "\\\\item ${1}",
+      "\\\\end{itemize}"
+    ]
+  },
+  "enn — Enumerated list": {
+    "scope": "latex",
+    "prefix": "enn",
+    "description": "Enumerated list",
+    "body": [
+      "\\\\begin{enumerate}[label=\\\\textnormal{(\\\\arabic*)}]",
+      "\\\\item ${1}",
+      "\\\\end{enumerate}"
+    ]
+  },
+  "tm — New item": {
+    "scope": "latex",
+    "prefix": "tm",
+    "description": "New item",
+    "body": [
+      "",
+      "\\\\item ${1}"
+    ]
+  },
+  "oo — New theorem [1/2]": {
+    "scope": "latex",
+    "prefix": "oo",
+    "description": "New theorem [1/2]",
+    "body": [
+      "\\\\begin{theorem}",
+      "${1:${TM_SELECTED_TEXT}}",
+      "\\\\end{theorem}"
+    ]
+  },
+  "oo2 — New theorem [2/2]": {
+    "scope": "latex",
+    "prefix": "oo2",
+    "description": "New theorem [2/2]",
+    "body": [
+      "\\\\begin{theorem}[${1:name}]",
+      "${2:${TM_SELECTED_TEXT}}",
+      "\\\\end{theorem}"
+    ]
+  },
+  "pf — Proof environment [1/2]": {
+    "scope": "latex",
+    "prefix": "pf",
+    "description": "Proof environment [1/2]",
+    "body": [
+      "\\\\begin{proof}",
+      "${1}",
+      "\\\\end{proof}"
+    ]
+  },
+  "pf2 — Proof environment [2/2]": {
+    "scope": "latex",
+    "prefix": "pf2",
+    "description": "Proof environment [2/2]",
+    "body": [
+      "\\\\begin{proof}[${1:name}]",
+      "${2}",
+      "\\\\end{proof}"
+    ]
+  },
+  "ps — New proposition [1/2]": {
+    "scope": "latex",
+    "prefix": "ps",
+    "description": "New proposition [1/2]",
+    "body": [
+      "\\\\begin{proposition}",
+      "${1:${TM_SELECTED_TEXT}}",
+      "\\\\end{proposition}"
+    ]
+  },
+  "ps2 — New proposition [2/2]": {
+    "scope": "latex",
+    "prefix": "ps2",
+    "description": "New proposition [2/2]",
+    "body": [
+      "\\\\begin{proposition}[${1:name}]",
+      "${2:${TM_SELECTED_TEXT}}",
+      "\\\\end{proposition}"
+    ]
+  },
+  "cc — New corollary [1/2]": {
+    "scope": "latex",
+    "prefix": "cc",
+    "description": "New corollary [1/2]",
+    "body": [
+      "\\\\begin{corollary}",
+      "${1:${TM_SELECTED_TEXT}}",
+      "\\\\end{corollary}"
+    ]
+  },
+  "cc2 — New corollary [2/2]": {
+    "scope": "latex",
+    "prefix": "cc2",
+    "description": "New corollary [2/2]",
+    "body": [
+      "\\\\begin{corollary}[${1:name}]",
+      "${2:${TM_SELECTED_TEXT}}",
+      "\\\\end{corollary}"
+    ]
+  },
+  "ll — New lemma [1/2]": {
+    "scope": "latex",
+    "prefix": "ll",
+    "description": "New lemma [1/2]",
+    "body": [
+      "\\\\begin{lemma}",
+      "${1:${TM_SELECTED_TEXT}}",
+      "\\\\end{lemma}"
+    ]
+  },
+  "ll2 — New lemma [2/2]": {
+    "scope": "latex",
+    "prefix": "ll2",
+    "description": "New lemma [2/2]",
+    "body": [
+      "\\\\begin{lemma}[${1:name}]",
+      "${2:${TM_SELECTED_TEXT}}",
+      "\\\\end{lemma}"
+    ]
+  },
+  "dd — New definition [1/2]": {
+    "scope": "latex",
+    "prefix": "dd",
+    "description": "New definition [1/2]",
+    "body": [
+      "\\\\begin{definition}",
+      "${1:${TM_SELECTED_TEXT}}",
+      "\\\\end{definition}"
+    ]
+  },
+  "dd2 — New definition [2/2]": {
+    "scope": "latex",
+    "prefix": "dd2",
+    "description": "New definition [2/2]",
+    "body": [
+      "\\\\begin{definition}[${1:name}]",
+      "${2:${TM_SELECTED_TEXT}}",
+      "\\\\end{definition}"
+    ]
+  },
+  "re — New remark [1/2]": {
+    "scope": "latex",
+    "prefix": "re",
+    "description": "New remark [1/2]",
+    "body": [
+      "\\\\begin{remark}",
+      "${1:${TM_SELECTED_TEXT}}",
+      "\\\\end{remark}"
+    ]
+  },
+  "re2 — New remark [2/2]": {
+    "scope": "latex",
+    "prefix": "re2",
+    "description": "New remark [2/2]",
+    "body": [
+      "\\\\begin{remark}[${1:name}]",
+      "${2:${TM_SELECTED_TEXT}}",
+      "\\\\end{remark}"
+    ]
+  },
+  "ex — New exercise [1/2]": {
+    "scope": "latex",
+    "prefix": "ex",
+    "description": "New exercise [1/2]",
+    "body": [
+      "\\\\begin{exercise}",
+      "${1:${TM_SELECTED_TEXT}}",
+      "\\\\end{exercise}"
+    ]
+  },
+  "ex2 — New exercise [2/2]": {
+    "scope": "latex",
+    "prefix": "ex2",
+    "description": "New exercise [2/2]",
+    "body": [
+      "\\\\begin{exercise}[${1:name}]",
+      "${2:${TM_SELECTED_TEXT}}",
+      "\\\\end{exercise}"
+    ]
+  },
+  "ee — New example [1/2]": {
+    "scope": "latex",
+    "prefix": "ee",
+    "description": "New example [1/2]",
+    "body": [
+      "\\\\begin{example}",
+      "${1:${TM_SELECTED_TEXT}}",
+      "\\\\end{example}"
+    ]
+  },
+  "ee2 — New example [2/2]": {
+    "scope": "latex",
+    "prefix": "ee2",
+    "description": "New example [2/2]",
+    "body": [
+      "\\\\begin{example}[${1:name}]",
+      "${2:${TM_SELECTED_TEXT}}",
+      "\\\\end{example}"
+    ]
+  },
+  "tab — Table environment": {
+    "scope": "latex",
+    "prefix": "tab",
+    "description": "Table environment",
+    "body": [
+      "\\\\begin{table}[${1:opt}]",
+      "\\\\begin{tabular}{${2:cols}}",
+      "    ${3}",
+      "\\\\end{tabular}",
+      "\\\\end{table}"
+    ]
+  },
+  "hn — Horizontal line": {
+    "scope": "latex",
+    "prefix": "hn",
+    "description": "Horizontal line",
+    "body": [
+      "\\\\hline",
+      ""
+    ]
+  },
+  "cpt — Caption [1/2]": {
+    "scope": "latex",
+    "prefix": "cpt",
+    "description": "Caption [1/2]",
+    "body": [
+      "\\\\caption{${1:text}}"
+    ]
+  },
+  "cpt2 — Caption [2/2]": {
+    "scope": "latex",
+    "prefix": "cpt2",
+    "description": "Caption [2/2]",
+    "body": [
+      "\\\\caption[${1:list-entry}]{${2:text}}"
+    ]
+  },
+  "tt — Typewriter family [1/3]": {
+    "scope": "latex",
+    "prefix": "tt",
+    "description": "Typewriter family [1/3]",
+    "body": [
+      "\\\\texttt{${1:${TM_SELECTED_TEXT:text}}}"
+    ]
+  },
+  "tt2 — Typewriter family [2/3]": {
+    "scope": "latex",
+    "prefix": "tt2",
+    "description": "Typewriter family [2/3]",
+    "body": [
+      "\\\\begin{ttfamily}${1:${TM_SELECTED_TEXT:...}}\\\\end{ttfamily}"
+    ]
+  },
+  "tt3 — Typewriter family [3/3]": {
+    "scope": "latex",
+    "prefix": "tt3",
+    "description": "Typewriter family [3/3]",
+    "body": [
+      "${1:\\\\ttfamily}"
+    ]
+  },
+  "bf — Bold series [1/3]": {
+    "scope": "latex",
+    "prefix": "bf",
+    "description": "Bold series [1/3]",
+    "body": [
+      "\\\\textbf{${1:${TM_SELECTED_TEXT:text}}}"
+    ]
+  },
+  "bf2 — Bold series [2/3]": {
+    "scope": "latex",
+    "prefix": "bf2",
+    "description": "Bold series [2/3]",
+    "body": [
+      "\\\\begin{bfseries}${1:${TM_SELECTED_TEXT:...}}\\\\end{bfseries}"
+    ]
+  },
+  "bf3 — Bold series [3/3]": {
+    "scope": "latex",
+    "prefix": "bf3",
+    "description": "Bold series [3/3]",
+    "body": [
+      "${1:\\\\bfseries}"
+    ]
+  },
+  "it — Italic shape [1/3]": {
+    "scope": "latex",
+    "prefix": "it",
+    "description": "Italic shape [1/3]",
+    "body": [
+      "\\\\textit{${1:${TM_SELECTED_TEXT:text}}}"
+    ]
+  },
+  "it2 — Italic shape [2/3]": {
+    "scope": "latex",
+    "prefix": "it2",
+    "description": "Italic shape [2/3]",
+    "body": [
+      "\\\\begin{itshape}${1:${TM_SELECTED_TEXT:...}}\\\\end{itshape}"
+    ]
+  },
+  "it3 — Italic shape [3/3]": {
+    "scope": "latex",
+    "prefix": "it3",
+    "description": "Italic shape [3/3]",
+    "body": [
+      "${1:\\\\itshape}"
+    ]
+  },
+  "em — Emphasized text [1/3]": {
+    "scope": "latex",
+    "prefix": "em",
+    "description": "Emphasized text [1/3]",
+    "body": [
+      "\\\\emph{${1:${TM_SELECTED_TEXT:text}}}"
+    ]
+  },
+  "em2 — Emphasized text [2/3]": {
+    "scope": "latex",
+    "prefix": "em2",
+    "description": "Emphasized text [2/3]",
+    "body": [
+      "\\\\begin{em}${1:${TM_SELECTED_TEXT:...}}\\\\end{em}"
+    ]
+  },
+  "em3 — Emphasized text [3/3]": {
+    "scope": "latex",
+    "prefix": "em3",
+    "description": "Emphasized text [3/3]",
+    "body": [
+      "${1:\\\\em}"
+    ]
+  },
+  "ct — Citation [1/2]": {
+    "scope": "latex",
+    "prefix": "ct",
+    "description": "Citation [1/2]",
+    "body": [
+      "\\\\cite{${1:key-list}}"
+    ]
+  },
+  "ct2 — Citation [2/2]": {
+    "scope": "latex",
+    "prefix": "ct2",
+    "description": "Citation [2/2]",
+    "body": [
+      "\\\\cite[${1:text}]{${2:key-list}}"
+    ]
+  },
+  "tc — Textual citation [1/6]": {
+    "scope": "latex",
+    "prefix": "tc",
+    "description": "Textual citation [1/6]",
+    "body": [
+      "\\\\citet{${1:key-list}}"
+    ]
+  },
+  "tc2 — Textual citation [2/6]": {
+    "scope": "latex",
+    "prefix": "tc2",
+    "description": "Textual citation [2/6]",
+    "body": [
+      "\\\\citet[${1:post-note}]{${2:key-list}}"
+    ]
+  },
+  "tc3 — Textual citation [3/6]": {
+    "scope": "latex",
+    "prefix": "tc3",
+    "description": "Textual citation [3/6]",
+    "body": [
+      "\\\\citet[${1:pre-note}][${2:post-note}]{${3:key-list}}"
+    ]
+  },
+  "tc4 — Textual citation [4/6]": {
+    "scope": "latex",
+    "prefix": "tc4",
+    "description": "Textual citation [4/6]",
+    "body": [
+      "\\\\citet*{${1:key-list}}"
+    ]
+  },
+  "tc5 — Textual citation [5/6]": {
+    "scope": "latex",
+    "prefix": "tc5",
+    "description": "Textual citation [5/6]",
+    "body": [
+      "\\\\citet*[${1:post-note}]{${2:key-list}}"
+    ]
+  },
+  "tc6 — Textual citation [6/6]": {
+    "scope": "latex",
+    "prefix": "tc6",
+    "description": "Textual citation [6/6]",
+    "body": [
+      "\\\\citet*[${1:pre-note}][${2:post-note}]{${3:key-list}}"
+    ]
+  },
+  "tpc — Parenthetical citation [1/6]": {
+    "scope": "latex",
+    "prefix": "tpc",
+    "description": "Parenthetical citation [1/6]",
+    "body": [
+      "\\\\citep{${1:key-list}}"
+    ]
+  },
+  "tpc2 — Parenthetical citation [2/6]": {
+    "scope": "latex",
+    "prefix": "tpc2",
+    "description": "Parenthetical citation [2/6]",
+    "body": [
+      "\\\\citep[${1:post-note}]{${2:key-list}}"
+    ]
+  },
+  "tpc3 — Parenthetical citation [3/6]": {
+    "scope": "latex",
+    "prefix": "tpc3",
+    "description": "Parenthetical citation [3/6]",
+    "body": [
+      "\\\\citep[${1:pre-note}][${2:post-note}]{${3:key-list}}"
+    ]
+  },
+  "tpc4 — Parenthetical citation [4/6]": {
+    "scope": "latex",
+    "prefix": "tpc4",
+    "description": "Parenthetical citation [4/6]",
+    "body": [
+      "\\\\citep*{${1:key-list}}"
+    ]
+  },
+  "tpc5 — Parenthetical citation [5/6]": {
+    "scope": "latex",
+    "prefix": "tpc5",
+    "description": "Parenthetical citation [5/6]",
+    "body": [
+      "\\\\citep*[${1:post-note}]{${2:key-list}}"
+    ]
+  },
+  "tpc6 — Parenthetical citation [6/6]": {
+    "scope": "latex",
+    "prefix": "tpc6",
+    "description": "Parenthetical citation [6/6]",
+    "body": [
+      "\\\\citep*[${1:pre-note}][${2:post-note}]{${3:key-list}}"
+    ]
+  },
+  "bib — Bibliography files": {
+    "scope": "latex",
+    "prefix": "bib",
+    "description": "Bibliography files",
+    "body": [
+      "\\\\bibliography{${1:file-list}}"
+    ]
+  },
+  "bisty — Bibliography style": {
+    "scope": "latex",
+    "prefix": "bisty",
+    "description": "Bibliography style",
+    "body": [
+      "\\\\bibliographystyle{${1:style}}"
+    ]
+  },
+  "art — article": {
+    "scope": "bibtex",
+    "prefix": "art",
+    "description": "article",
+    "body": [
+      "@article{${1:key-identifier},",
+      "    author = \"${2}\",",
+      "    title = \"${3}\",",
+      "    journal = \"${4}\",",
+      "    year = \"${5}\",",
+      "    volume = \"${6}\",",
+      "    number = \"${7}\",",
+      "    pages = \"${8}\",",
+      "    month = \"${9}\",",
+      "    note = \"${10}\"",
+      "}"
+    ]
+  },
+  "bks — book": {
+    "scope": "bibtex",
+    "prefix": "bks",
+    "description": "book",
+    "body": [
+      "@book{${1:key-identifier},",
+      "    author = \"${2}\",",
+      "    editor = \"${3}\",",
+      "    title = \"${4}\",",
+      "    publisher = \"${5}\",",
+      "    year = \"${6}\",",
+      "    volume = \"${7}\",",
+      "    number = \"${8}\",",
+      "    series = \"${9}\",",
+      "    address = \"${10}\",",
+      "    edition = \"${11}\",",
+      "    month = \"${12}\",",
+      "    note = \"${13}\"",
+      "}"
+    ]
+  },
+  "inp — inproceedings": {
+    "scope": "bibtex",
+    "prefix": "inp",
+    "description": "inproceedings",
+    "body": [
+      "@inproceedings{${1:key-identifier},",
+      "    author = \"${2}\",",
+      "    title = \"${3}\",",
+      "    booktitle = \"${4}\",",
+      "    year = \"${5}\",",
+      "    editor = \"${6}\",",
+      "    volume = \"${7}\",",
+      "    number = \"${8}\",",
+      "    series = \"${9}\",",
+      "    pages = \"${10}\",",
+      "    address = \"${11}\",",
+      "    month = \"${12}\",",
+      "    organization = \"${13}\",",
+      "    edition = \"${14}\",",
+      "    publisher = \"${15}\",",
+      "    note = \"${16}\"",
+      "}"
+    ]
+  },
+  "mis — misc": {
+    "scope": "bibtex",
+    "prefix": "mis",
+    "description": "misc",
+    "body": [
+      "@misc{${1:key-identifier},",
+      "    author = \"${2}\",",
+      "    title = \"${3}\",",
+      "    howpublished = \"${4}\",",
+      "    month = \"${5}\",",
+      "    year = \"${6}\",",
+      "    note = \"${7}\"",
+      "}"
+    ]
+  },
+  "phd — phdthesis": {
+    "scope": "bibtex",
+    "prefix": "phd",
+    "description": "phdthesis",
+    "body": [
+      "@phdthesis{${1:key-identifier},",
+      "    author = \"${2}\",",
+      "    title = \"${3}\",",
+      "    school = \"${4}\",",
+      "    year = \"${5}\",",
+      "    type = \"${6}\",",
+      "    address = \"${7}\",",
+      "    month = \"${8}\",",
+      "    note = \"${9}\"",
+      "}"
+    ]
+  }
+}
