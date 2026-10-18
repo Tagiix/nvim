@@ -24,6 +24,8 @@ local PALETTE_MAP = {
     ["rose-pine-main"]    = { cs = "rose-pine",         bg = "dark"  },
     ["rose-pine-dawn"]    = { cs = "rose-pine-dawn",    bg = "light" },
     ["nord"]              = { cs = "nord",              bg = "dark"  },
+    ["tokyo-night"]       = { cs = "tokyonight-night",  bg = "dark"  },
+    ["kanagawa"]          = { cs = "kanagawa-wave",     bg = "dark"  },
 }
 
 local function resolve()
@@ -117,6 +119,12 @@ return {
     -- Nord (dark only)
     {
         "shaunsingh/nord.nvim",
+        lazy = true,
+    },
+
+    -- Kanagawa (dark: wave). Tokyo Night comes from LazyVim's bundled tokyonight.nvim.
+    {
+        "rebelot/kanagawa.nvim",
         lazy = true,
     },
 
