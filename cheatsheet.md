@@ -150,7 +150,7 @@
 | Key | Action |
 |-----|--------|
 | `<C-n>` / `<C-p>` | Next / prev completion item |
-| `<Tab>` | Accept Supermaven suggestion / jump to next snippet node |
+| `<Tab>` | Accept completion / jump to next snippet node |
 | `<CR>` | Confirm selection |
 | `<C-Space>` | Trigger completion |
 | `<C-e>` | Abort completion |
