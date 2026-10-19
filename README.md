@@ -8,8 +8,10 @@ more — this config layers personal plugins and snippets on top of it.
 
 ## Installation
 
+The full list of system packages is in [`INSTALL.md`](INSTALL.md).
+
 ```bash
-# 1. Install dependencies (Arch Linux)
+# 1. Install dependencies (Arch Linux; see INSTALL.md for the complete list)
 sudo pacman -S neovim git ripgrep fd unzip nodejs npm
 sudo pacman -S clang cmake ninja ccache   # C++ toolchain (ccache speeds up rebuilds)
 yay -S sioyek-git                         # LaTeX PDF viewer (AUR)
