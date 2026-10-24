@@ -24,12 +24,12 @@ vim.api.nvim_create_autocmd("FileType", {
 
     -- Run current file in a floating terminal
     vim.keymap.set("n", "<leader>rp", function()
-      Snacks.terminal({ "python3", vim.fn.expand("%:p") }, { auto_close = false })
+      Snacks.terminal({ py, vim.fn.expand("%:p") }, { auto_close = false })
     end, { buffer = ev.buf, desc = "Run Python file" })
 
     -- Open an interactive Python REPL
     vim.keymap.set("n", "<leader>ri", function()
-      Snacks.terminal("python3")
+      Snacks.terminal(py)
     end, { buffer = ev.buf, desc = "Python REPL" })
   end,
 })

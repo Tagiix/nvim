@@ -59,3 +59,36 @@ Not installed on this machine, unchecked.
 
 The `<leader>a…` keys drive the `claude` CLI, which must be on `PATH`
 (*checked*: the `claude-code` package).
+
+## Windows 11 (set up 2026-10-24)
+
+The repo is used in place: `%LOCALAPPDATA%\nvim` is a directory junction to
+the clone, so edits there are edits in git and sync like on Linux.
+
+```powershell
+git clone git@github.com:Tagiix/nvim.git $env:USERPROFILE\nvim
+New-Item -ItemType Junction -Path "$env:LOCALAPPDATA\nvim" -Target "$env:USERPROFILE\nvim"
+winget install -e --id Neovim.Neovim
+winget install -e --id BurntSushi.ripgrep.MSVC
+winget install -e --id sharkdp.fd
+winget install -e --id JesseDuffield.lazygit
+winget install -e --id Python.Python.3.12
+winget install -e --id OpenJS.NodeJS.LTS          # asks for admin
+winget install -e --id DEVCOM.JetBrainsMonoNerdFont
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned   # lets npm.ps1 run
+npm install -g tree-sitter-cli
+```
+
+Also needed: a C compiler on PATH (msys64 `gcc` here) for treesitter and
+LuaSnip. Set the terminal font to a JetBrainsMono Nerd Font. Plugins and
+Mason tools install themselves on first launch (`:checkhealth
+nvim-treesitter`, `:Mason` to verify).
+
+Windows differences, all guarded by `has("win32")` so Linux is unchanged:
+
+- `options.lua`: the project venv is `.venv/Scripts` and PATH uses `;`.
+- `autocmds.lua`: `<leader>rp` / `<leader>ri` run `python`, not `python3`.
+- `vimtex.lua`: viewer is `general` (SumatraPDF) instead of zathura.
+
+Not checked on Windows: `claudecode.nvim`, LuaSnip `make install_jsregexp`
+(no `make`; optional), vimtex/LaTeX.

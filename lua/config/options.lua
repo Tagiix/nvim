@@ -10,11 +10,13 @@ vim.opt.undofile = true -- persist undo history across sessions
 -- the language server, tests and <leader>rp all use it. Runs here, before
 -- plugins load, so the LSP starts with the right interpreter. Does nothing if
 -- a venv is already active in the shell.
+local is_win = vim.fn.has("win32") == 1
 if not vim.env.VIRTUAL_ENV then
   local venv = vim.fs.find(".venv", { upward = true, type = "directory", path = vim.fn.getcwd() })[1]
-  if venv and vim.fn.executable(venv .. "/bin/python") == 1 then
+  local bin = venv and (venv .. (is_win and "/Scripts" or "/bin"))
+  if bin and vim.fn.executable(bin .. (is_win and "/python.exe" or "/python")) == 1 then
     vim.env.VIRTUAL_ENV = venv
-    vim.env.PATH = venv .. "/bin:" .. vim.env.PATH
+    vim.env.PATH = bin .. (is_win and ";" or ":") .. vim.env.PATH
   end
 end
 
