@@ -9,6 +9,9 @@
 
 local open_doc = require("util").open_doc
 
+-- Windows installs Python as `python`; Linux and macOS as `python3`.
+local py = vim.fn.has("win32") == 1 and "python" or "python3"
+
 -- LazyVim's VimResized runs `tabdo wincmd =` which equalizes all windows in
 -- every tab. This breaks leetcode.nvim layouts (menu splits in two, etc.).
 vim.api.nvim_del_augroup_by_name("lazyvim_resize_splits")

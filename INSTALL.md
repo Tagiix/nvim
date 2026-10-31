@@ -92,3 +92,28 @@ Windows differences, all guarded by `has("win32")` so Linux is unchanged:
 
 Not checked on Windows: `claudecode.nvim`, LuaSnip `make install_jsregexp`
 (no `make`; optional), vimtex/LaTeX.
+
+## macOS (set up 2026-10-31)
+
+Same as Windows: the clone is linked in place, so edits are edits in git.
+The Homebrew packages are in `Tagiix/mac-dotfiles`'s `Brewfile`.
+
+```sh
+git clone git@github.com:Tagiix/nvim.git ~/dotfiles-linux/nvim
+ln -s ~/dotfiles-linux/nvim ~/.config/nvim
+brew install neovim ripgrep fd lazygit node tree-sitter-cli cmake ninja
+brew install --cask font-jetbrains-mono-nerd-font skim
+```
+
+Needs the Xcode Command Line Tools (`xcode-select --install`) for the C
+compiler and `make`. LaTeX also needs a TeX distribution (`basictex` or
+`mactex` cask) for `latexmk`.
+
+macOS differences, all guarded by `has("mac")` so Linux is unchanged:
+
+- `vimtex.lua`: viewer is Skim instead of zathura.
+- `colorscheme.lua`: there's no palette cache on macOS, so the theme follows
+  the terminal (catppuccin latte when macOS is light, mocha when it's dark).
+
+`cpp.lua` uses `vim.uv.available_parallelism()` instead of `nproc` on every
+OS, since `nproc` doesn't exist on macOS.

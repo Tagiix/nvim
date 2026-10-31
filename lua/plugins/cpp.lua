@@ -1,4 +1,5 @@
-local nproc = vim.trim(vim.fn.system("nproc"))
+-- Works on every OS (`nproc` doesn't exist on macOS or Windows).
+local nproc = tostring(vim.uv.available_parallelism())
 
 return {
   -- Override clangd args: use all CPU threads, enable clang-tidy, IWYU-aware headers

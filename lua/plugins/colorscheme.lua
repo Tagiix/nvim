@@ -30,12 +30,17 @@ local PALETTE_MAP = {
 
 local function resolve()
     local slug = active_palette()
-    return PALETTE_MAP[slug] or { cs = "catppuccin-mocha", bg = "dark" }
+    if PALETTE_MAP[slug] then return PALETTE_MAP[slug] end
+    -- macOS has no theme switcher: follow the terminal instead. Neovim reads
+    -- kitty's background colour and sets 'background', and catppuccin's
+    -- flavour = "auto" picks latte (light) or mocha (dark) from it.
+    if vim.fn.has("mac") == 1 then return { cs = "catppuccin" } end
+    return { cs = "catppuccin-mocha", bg = "dark" }
 end
 
 local entry = resolve()
 -- Set background early so plugins that check it during setup see the right value.
-vim.o.background = entry.bg
+if entry.bg then vim.o.background = entry.bg end
 
 return {
     -- Catppuccin (dark: mocha, light: latte)
