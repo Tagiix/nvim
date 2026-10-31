@@ -112,8 +112,10 @@ compiler and `make`. LaTeX also needs a TeX distribution (`basictex` or
 macOS differences, all guarded by `has("mac")` so Linux is unchanged:
 
 - `vimtex.lua`: viewer is Skim instead of zathura.
-- `colorscheme.lua`: there's no palette cache on macOS, so the theme follows
-  the terminal (catppuccin latte when macOS is light, mocha when it's dark).
+- `colorscheme.lua`: there's no palette cache on macOS, so it uses the Xcode
+  colours (`lunacookies/vim-colors-xcode`, loaded on macOS only):
+  `xcodelight` or `xcodedark` from the terminal's background, switching live
+  when macOS changes appearance. Same palette as the mac-dotfiles kitty theme.
 
 `cpp.lua` uses `vim.uv.available_parallelism()` instead of `nproc` on every
 OS, since `nproc` doesn't exist on macOS.

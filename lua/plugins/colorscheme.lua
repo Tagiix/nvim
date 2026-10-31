@@ -31,16 +31,37 @@ local PALETTE_MAP = {
 local function resolve()
     local slug = active_palette()
     if PALETTE_MAP[slug] then return PALETTE_MAP[slug] end
-    -- macOS has no theme switcher: follow the terminal instead. Neovim reads
-    -- kitty's background colour and sets 'background', and catppuccin's
-    -- flavour = "auto" picks latte (light) or mocha (dark) from it.
-    if vim.fn.has("mac") == 1 then return { cs = "catppuccin" } end
+    -- macOS has no theme switcher: Xcode colours (same as the mac-dotfiles
+    -- kitty theme), light or dark from 'background', which Neovim reads
+    -- from the terminal and updates when macOS switches appearance.
+    if vim.fn.has("mac") == 1 then
+        return {
+            cs = function()
+                vim.cmd.colorscheme(vim.o.background == "light" and "xcodelight" or "xcodedark")
+            end,
+        }
+    end
     return { cs = "catppuccin-mocha", bg = "dark" }
 end
 
 local entry = resolve()
 -- Set background early so plugins that check it during setup see the right value.
 if entry.bg then vim.o.background = entry.bg end
+
+if vim.fn.has("mac") == 1 then
+    vim.api.nvim_create_autocmd("OptionSet", {
+        pattern = "background",
+        -- Scheduled: changing 'background' first re-sources the current
+        -- colorscheme, which for xcodedark/xcodelight resets it.
+        callback = function()
+            vim.schedule(function()
+                local name = vim.g.colors_name
+                local want = vim.o.background == "light" and "xcodelight" or "xcodedark"
+                if name ~= want and (name == nil or name:find("^xcode")) then entry.cs() end
+            end)
+        end,
+    })
+end
 
 return {
     -- Catppuccin (dark: mocha, light: latte)
@@ -125,6 +146,13 @@ return {
     {
         "shaunsingh/nord.nvim",
         lazy = true,
+    },
+
+    -- Xcode (macOS only: xcodelight / xcodedark)
+    {
+        "lunacookies/vim-colors-xcode",
+        lazy = true,
+        cond = vim.fn.has("mac") == 1,
     },
 
     -- Kanagawa (dark: wave). Tokyo Night comes from LazyVim's bundled tokyonight.nvim.
