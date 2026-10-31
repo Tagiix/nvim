@@ -94,7 +94,7 @@ vim.fn.setenv("GEMINI_API_KEY", "your-key-here")
 │               ├── floats.lua        # Tables, figures, captions
 │               ├── fonts.lua         # Font size/style commands
 │               └── templates.lua     # Full document templates
-├── lazy-lock.json                    # Plugin version lockfile (committed)
+├── lazy-lock.json                    # Plugin versions — local only, gitignored
 └── lazyvim.json                      # LazyVim extras
 ```
 

@@ -76,20 +76,3 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.statuscolumn = ""
   end,
 })
-
--- Auto-commit lazy-lock.json after `:Lazy update`/`:Lazy sync` (local commit only, push manually)
-vim.api.nvim_create_autocmd("User", {
-  pattern = "LazySync",
-  callback = function()
-    vim.system({
-      "git",
-      "-C",
-      vim.fn.stdpath("config"),
-      "commit",
-      "-m",
-      "Update lazy-lock.json",
-      "--",
-      "lazy-lock.json",
-    })
-  end,
-})

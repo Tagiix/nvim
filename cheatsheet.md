@@ -294,7 +294,7 @@
 | `:Lazy` | Open plugin manager UI |
 | `:Lazy sync` | Install + update + clean |
 | `:Lazy update` | Update all plugins |
-| `:Lazy restore` | Roll back to `lazy-lock.json` |
+| `:Lazy restore` | Roll back to this machine's `lazy-lock.json` |
 | `:Mason` | Open LSP installer |
 | `:MasonUpdate` | Update all LSP servers |
 

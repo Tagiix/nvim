@@ -26,3 +26,6 @@ foo.*
 
 # Dead code — root-level plugins/ dir, never loaded by lazy.nvim
 /plugins/
+
+# Plugin versions float per machine (each install gets the latest)
+lazy-lock.json
