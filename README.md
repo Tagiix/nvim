@@ -172,7 +172,7 @@ vim.fn.setenv("GEMINI_API_KEY", "your-key-here")
 
 | Key | Action |
 |-----|--------|
-| `\ll` | Start/stop compilation |
+| `,ll` | Start/stop compilation |
 | `\lv` | View PDF in Zathura |
 | `\lt` | Toggle table of contents |
 | `\le` | Show errors |

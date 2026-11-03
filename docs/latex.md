@@ -36,32 +36,32 @@ hang at 100% CPU on some PDFs; see `~/hypr-dotfiles`'s CHANGELOG for details.)
 
 ## Vimtex Keymaps
 
-`<localleader>` is `\` (backslash) by default.
+`<localleader>` is `,` (set in `lua/config/options.lua`; vimtex default is `\`).
 
 ### Compilation
 
 | Key | Action |
 | --- | ------ |
-| `\ll` | Start/stop continuous compilation |
-| `\lL` | Compile once |
-| `\lx` | Cancel compilation |
-| `\le` | Open error list |
-| `\lo` | Show compiler output |
-| `\lq` | Show quickfix / log |
+| `,ll` | Start/stop continuous compilation |
+| `,lL` | Compile once |
+| `,lx` | Cancel compilation |
+| `,le` | Open error list |
+| `,lo` | Show compiler output |
+| `,lq` | Show quickfix / log |
 
 ### Viewing
 
 | Key | Action |
 | --- | ------ |
-| `\lv` | Open PDF in Sioyek (forward search to cursor position) |
+| `,lv` | Open PDF in Skim on Mac (forward search to cursor position) |
 
 ### Navigation
 
 | Key | Action |
 | --- | ------ |
-| `\lt` | Toggle table of contents |
-| `\li` | File info / included files |
-| `\lg` | Status |
+| `,lt` | Toggle table of contents |
+| `,li` | File info / included files |
+| `,lg` | Status |
 
 ### Motions  (in `.tex` files)
 

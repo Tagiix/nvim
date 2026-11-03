@@ -1,6 +1,8 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 
+vim.g.maplocalleader = "," -- vimtex keys: ,ll compile, ,lv view (`\` needs a chord on a French Mac keyboard)
+
 vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
 vim.opt.textwidth = 160
 vim.opt.undofile = true -- persist undo history across sessions

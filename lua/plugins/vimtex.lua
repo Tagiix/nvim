@@ -3,6 +3,16 @@
 return {
   {
     "lervag/vimtex",
+    config = function()
+      -- vimtex's "not in a comment" regex uses a lookbehind that makes Vim's
+      -- NFA engine take >1s on a normal preamble (0.7ms with the backtracking
+      -- engine). Force engine 1 for that pattern; it is always used at pattern start.
+      vim.cmd("runtime autoload/vimtex/re.vim")
+      local re = vim.g["vimtex#re#not_comment"]
+      if re and not re:find("\\%#=", 1, true) then
+        vim.g["vimtex#re#not_comment"] = "\\%#=1" .. re
+      end
+    end,
     init = function()
       if vim.fn.has("win32") == 1 then
         vim.g.vimtex_view_method = "general"
