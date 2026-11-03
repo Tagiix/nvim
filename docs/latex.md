@@ -530,3 +530,19 @@ Open any included `.tex` file and compile — it finds the root automatically
 **Snippet conflicts between custom and evesdropper** — if a trigger expands
 to the wrong snippet, press `<C-L>` immediately to cycle to the next one.
 Your custom snippets have visual selection support; evesdropper's may not.
+
+## Open question from the Mac: slow vimtex load (2026-11-04)
+
+On the Mac (NVIM v0.12.6, vimtex `3f965039`) opening a `.tex` file took ~1.6 s. Cause: vimtex's `s:parse_packages()` runs
+`g:vimtex#re#not_comment` (a `\(...\%.*\)\@<!` lookbehind) over the joined preamble, and Vim's NFA regex engine needs >1 s for it
+(backtracking engine, `\%#=1`: 0.7 ms). The Mac fixes it in `lua/plugins/vimtex.lua` (branch `macos-support`) by prefixing that variable with `\%#=1`.
+The fix is OS-independent. What is unknown is why Linux apparently did not need it.
+
+**Linux Claude session: please run and write the answers below**
+1. `nvim --version | head -1`
+2. `git -C ~/.local/share/nvim/lazy/vimtex log -1 --format=%h`
+3. `time nvim --headless file.tex +qa` on a .tex file with a ~50-line preamble (Mac: 1.6 s before the fix, 0.36 s after)
+
+If 3 is slow on Linux too, merge the `macos-support` vimtex.lua change into master. If it is fast, find which of the three differences explains it.
+
+Answers: _(none yet)_
