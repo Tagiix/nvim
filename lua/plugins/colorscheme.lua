@@ -31,13 +31,13 @@ local PALETTE_MAP = {
 local function resolve()
     local slug = active_palette()
     if PALETTE_MAP[slug] then return PALETTE_MAP[slug] end
-    -- macOS has no theme switcher: Xcode colours (same as the mac-dotfiles
-    -- kitty theme), light or dark from 'background', which Neovim reads
-    -- from the terminal and updates when macOS switches appearance.
+    -- macOS has no theme switcher: Kanagawa (wave / lotus), light or dark
+    -- from 'background', which Neovim reads from the terminal and updates
+    -- when macOS switches appearance.
     if vim.fn.has("mac") == 1 then
         return {
             cs = function()
-                vim.cmd.colorscheme(vim.o.background == "light" and "xcodelight" or "xcodedark")
+                vim.cmd.colorscheme(vim.o.background == "light" and "kanagawa-lotus" or "kanagawa-wave")
             end,
         }
     end
@@ -52,12 +52,12 @@ if vim.fn.has("mac") == 1 then
     vim.api.nvim_create_autocmd("OptionSet", {
         pattern = "background",
         -- Scheduled: changing 'background' first re-sources the current
-        -- colorscheme, which for xcodedark/xcodelight resets it.
+        -- colorscheme, which for kanagawa-wave/lotus resets it.
         callback = function()
             vim.schedule(function()
                 local name = vim.g.colors_name
-                local want = vim.o.background == "light" and "xcodelight" or "xcodedark"
-                if name ~= want and (name == nil or name:find("^xcode")) then entry.cs() end
+                local want = vim.o.background == "light" and "kanagawa-lotus" or "kanagawa-wave"
+                if name ~= want and (name == nil or name:find("^kanagawa")) then entry.cs() end
             end)
         end,
     })
@@ -155,7 +155,7 @@ return {
         cond = vim.fn.has("mac") == 1,
     },
 
-    -- Kanagawa (dark: wave). Tokyo Night comes from LazyVim's bundled tokyonight.nvim.
+    -- Kanagawa (dark: wave, light: lotus; macOS default). Tokyo Night comes from LazyVim's bundled tokyonight.nvim.
     {
         "rebelot/kanagawa.nvim",
         lazy = true,
