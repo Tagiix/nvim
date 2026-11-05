@@ -7,6 +7,8 @@
 --   <leader>jv run selection (visual)   <leader>jr run with motion
 --   <leader>jo show output   <leader>jh hide output   <leader>jd delete output
 --   <leader>jk restart kernel   <leader>jq stop kernel   ]j / [j next / previous cell
+--   <leader>jn / jp next / previous cell (easier than ]j / [j on a French Mac keyboard)
+--   <leader>jJ run the cell, then jump to the next one
 if vim.fn.has("mac") ~= 1 or vim.fn.executable("jupytext") ~= 1 then
   return {}
 end
@@ -90,6 +92,17 @@ return {
       { "<leader>jq", "<cmd>MoltenDeinit<cr>", desc = "Jupyter: stop kernel" },
       { "]j", [[/^# %%<cr>:noh<cr>]], desc = "Next cell" },
       { "[j", [[?^# %%<cr>:noh<cr>]], desc = "Previous cell" },
+      { "<leader>jn", [[/^# %%<cr>:noh<cr>]], desc = "Jupyter: next cell" },
+      { "<leader>jp", [[?^# %%<cr>:noh<cr>]], desc = "Jupyter: previous cell" },
+      {
+        "<leader>jJ",
+        function()
+          run_cell()
+          vim.cmd([[silent! /^# %%/]])
+          vim.cmd("noh")
+        end,
+        desc = "Jupyter: run cell and go to next",
+      },
     },
   },
 }
