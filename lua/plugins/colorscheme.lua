@@ -162,11 +162,19 @@ return {
         opts = vim.fn.has("mac") == 1 and {
             -- Floats (noice cmdline, popups) share the editor background, else
             -- noice draws a two-tone box (float frame + editor-coloured input).
-            overrides = function()
+            -- noice's cmdline border/title/icon link to DiagnosticSign*, which
+            -- kanagawa paints with the gutter background (the lighter frame).
+            overrides = function(colors)
+                local diag = colors.theme.diag
                 return {
                     NormalFloat = { bg = "none" },
                     FloatBorder = { bg = "none" },
                     FloatTitle = { bg = "none" },
+                    NoiceCmdlinePopupBorder = { fg = diag.info, bg = "none" },
+                    NoiceCmdlinePopupTitle = { fg = diag.info, bg = "none" },
+                    NoiceCmdlineIcon = { fg = diag.info, bg = "none" },
+                    NoiceCmdlinePopupBorderSearch = { fg = diag.warning, bg = "none" },
+                    NoiceCmdlineIconSearch = { fg = diag.warning, bg = "none" },
                 }
             end,
         } or nil,
