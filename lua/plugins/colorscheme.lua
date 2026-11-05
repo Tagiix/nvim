@@ -159,6 +159,17 @@ return {
     {
         "rebelot/kanagawa.nvim",
         lazy = true,
+        opts = vim.fn.has("mac") == 1 and {
+            -- Floats (noice cmdline, popups) share the editor background, else
+            -- noice draws a two-tone box (float frame + editor-coloured input).
+            overrides = function()
+                return {
+                    NormalFloat = { bg = "none" },
+                    FloatBorder = { bg = "none" },
+                    FloatTitle = { bg = "none" },
+                }
+            end,
+        } or nil,
     },
 
     -- Apply the palette-resolved colorscheme
