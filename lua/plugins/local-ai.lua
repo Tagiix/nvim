@@ -7,7 +7,7 @@ if vim.fn.has("mac") ~= 1 or vim.fn.executable("ollama") ~= 1 then
   return {}
 end
 
-local CHAT_MODEL = "qwen3-coder:30b"
+local CHAT_MODEL = "qwen3.6:35b-a3b"
 local FIM_MODEL = "qwen2.5-coder:7b" -- small base model, FIM-trained
 
 -- The Ollama service keeps models in RAM for 1h (OLLAMA_KEEP_ALIVE in its
